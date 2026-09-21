@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA COUTURE | Haute Couture & AI Styling</title>
+    <title>AURA COUTURE | Ultra-Luxury Atelier</title>
     
-    <!-- Google Fonts & Font Awesome Icons -->
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -21,10 +21,14 @@
 </head>
 <body>
 
-    <!-- Dynamic Sale & Announcement Bar -->
+    <!-- Glowing Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Dynamic Sale Bar -->
     <div class="announcement-bar">
         <div class="sale-ticker">
-            <span>🔥 PRIVATE SALE: GET 20% OFF WITH CODE <strong>AURA20</strong> | COMPLIMENTARY WORLDWIDE SHIPPING</span>
+            <span>✨ EXCLUSIVE PRIVATE COUTURE COLLECTION | COMPLIMENTARY EXPRESS SHIPPING WORLDWIDE</span>
         </div>
         <select id="currency-select" class="currency-dropdown">
             <option value="USD">USD ($)</option>
@@ -33,67 +37,67 @@
         </select>
     </div>
 
-    <!-- iOS Glassmorphism Navbar -->
+    <!-- Glassmorphism Navbar -->
     <nav class="navbar ios-glass">
         <div class="brand-container">
-            <div class="lion-logo-wrap">
+            <div class="lion-logo-wrap glow-hover">
                 <i class="fa-solid fa-shield-cat brand-lion-icon"></i>
             </div>
             <div class="brand-logo">AURA</div>
         </div>
 
         <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#sale-section">Special Sale</a></li>
-            <li><a href="#collection">Catalogue</a></li>
-            <li><a href="#about">Atelier</a></li>
+            <li><a href="#hero" class="nav-link">Home</a></li>
+            <li><a href="#sale-section" class="nav-link">Offers</a></li>
+            <li><a href="#collection" class="nav-link">Catalogue</a></li>
+            <li><a href="#about" class="nav-link">Atelier</a></li>
         </ul>
 
         <div class="nav-icons">
-            <div class="search-trigger" id="search-toggle" title="Search Catalogue">
+            <div class="search-trigger icon-hover" id="search-toggle" title="Search">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
             <button class="ai-buy-btn pulse-glow" id="ai-stylist-trigger">
                 <i class="fa-solid fa-wand-magic-sparkles"></i> Buy with AI
             </button>
-            <div class="icon-wrap" id="wishlist-icon" title="Wishlist">
+            <div class="icon-wrap icon-hover" id="wishlist-icon" title="Wishlist">
                 <i class="fa-regular fa-heart"></i>
                 <span class="badge" id="wishlist-count">0</span>
             </div>
-            <div class="icon-wrap" id="cart-icon" title="Shopping Bag">
+            <div class="icon-wrap icon-hover" id="cart-icon" title="Bag">
                 <i class="fa-solid fa-bag-shopping"></i>
                 <span class="badge" id="cart-count">0</span>
             </div>
         </div>
     </nav>
 
-    <!-- Search Overlay Bar -->
+    <!-- Search Overlay -->
     <div class="search-bar-container" id="search-container">
         <div class="search-input-wrap">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input type="text" id="search-input" placeholder="Search tuxedos, silk gowns, velvet coats...">
+            <input type="text" id="search-input" placeholder="Search tuxedo, silk gowns, coats, blazers...">
             <span class="close-search" id="close-search">&times;</span>
         </div>
     </div>
 
-    <!-- Hero Section with Animated Elements -->
+    <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-content ios-glass-card" data-aos="fade-up" data-aos-duration="1200">
-            <p class="hero-subtitle">Haute Couture Collection 2026</p>
-            <h1 class="hero-title">Redefining Modern Luxury</h1>
+        <div class="hero-content ios-glass-card" data-aos="zoom-in" data-aos-duration="1200">
+            <p class="hero-subtitle float-anim">Haute Couture Collection 2026</p>
+            <h1 class="hero-title shimmer-text">Redefining High Luxury</h1>
             <p class="hero-desc">Bespoke garments tailored with Italian silk, Cashmere, and Royal Velvet.</p>
             <div class="hero-btns">
-                <a href="#collection" class="btn-primary ios-btn">Explore Collection</a>
-                <button class="btn-secondary ios-btn" id="hero-ai-btn"><i class="fa-solid fa-sparkles"></i> AI Style Finder</button>
+                <a href="#collection" class="btn-primary ios-btn hover-lift">Explore Collection</a>
+                <button class="btn-secondary ios-btn hover-lift" id="hero-ai-btn"><i class="fa-solid fa-sparkles"></i> AI Style Finder</button>
             </div>
         </div>
     </section>
 
-    <!-- Special Offers & Sale Banner Section -->
+    <!-- Special Offers Section -->
     <section class="sale-banner-section" id="sale-section" data-aos="fade-up">
-        <div class="sale-card ios-glass-card">
-            <div class="sale-badge">Limited Time Offer</div>
-            <h2>Exclusive Winter Sale</h2>
+        <div class="sale-card ios-glass-card glow-border">
+            <div class="sale-badge">Limited Edition</div>
+            <h2 class="shimmer-text">Winter Runway Special</h2>
             <p>Enjoy up to 25% off selected runway pieces and bespoke couture garments.</p>
             <div class="countdown-timer">
                 <div class="time-box"><span id="days">02</span><p>Days</p></div>
@@ -104,10 +108,10 @@
         </div>
     </section>
 
-    <!-- Swipe Carousel Section -->
+    <!-- Swipe Carousel -->
     <section class="swipe-section" id="slider-section" data-aos="fade-up">
         <h2 class="section-title">Trending Masterpieces</h2>
-        <p class="section-subtitle">Swipe left or right to explore highlights</p>
+        <p class="section-subtitle">Swipe left or right to explore curated outfits</p>
         
         <div class="swiper mySwiper">
             <div class="swiper-wrapper" id="swipe-wrapper"></div>
@@ -119,8 +123,8 @@
 
     <!-- Main Collection Grid -->
     <section id="collection" class="collection-section">
-        <h2 class="section-title" data-aos="fade-up">Full Catalogue</h2>
-        <p class="section-subtitle" data-aos="fade-up">Handcrafted garments designed for global connoisseurs</p>
+        <h2 class="section-title" data-aos="fade-up">Full Collection</h2>
+        <p class="section-subtitle" data-aos="fade-up">Crafted for modern royal style</p>
 
         <div class="filter-container" data-aos="fade-up">
             <button class="filter-btn ios-btn active" data-filter="all">All</button>
@@ -132,43 +136,60 @@
         <div class="products-grid" id="product-grid"></div>
     </section>
 
+    <!-- Smart Fit Guide Modal Trigger Bar -->
+    <div class="fit-guide-bar" data-aos="fade-up">
+        <button class="btn-secondary ios-btn" id="open-fit-modal"><i class="fa-solid fa-ruler-combined"></i> Open Size & Fit Finder</button>
+    </div>
+
     <!-- About Section -->
     <section class="about-section" id="about">
-        <div class="about-card ios-glass-card" data-aos="zoom-in">
+        <div class="about-card ios-glass-card" data-aos="flip-up">
             <h2>The House of AURA</h2>
             <p>Founded in Milano, AURA represents the pinnacle of modern luxury tailoring. Every piece is individually crafted by master artisans with decades of heritage experience.</p>
         </div>
     </section>
 
-    <!-- Buy With AI Modal -->
+    <!-- AI Stylist Modal -->
     <div class="modal-overlay" id="ai-modal-overlay"></div>
     <div class="modal ios-glass-card" id="ai-stylist-modal">
         <span class="close-btn" id="close-ai-modal">&times;</span>
         <div class="ai-modal-header">
-            <i class="fa-solid fa-wand-magic-sparkles gold-text" style="font-size: 28px;"></i>
-            <h2>AURA AI Personal Stylist</h2>
-            <p>Tell us your occasion, and our AI will recommend the perfect outfit.</p>
+            <i class="fa-solid fa-wand-magic-sparkles gold-text" style="font-size: 32px;"></i>
+            <h2>AURA AI Stylist</h2>
+            <p>Select your event style for custom AI recommendations.</p>
         </div>
         <div class="ai-modal-body">
             <div class="form-group">
-                <label>Select Event / Occasion:</label>
+                <label>Select Event:</label>
                 <select id="ai-occasion">
-                    <option value="gala">Red Carpet / Royal Gala</option>
-                    <option value="wedding">Luxury Wedding / Reception</option>
-                    <option value="business">Executive Business Summit</option>
-                    <option value="casual">Evening Cocktail Party</option>
+                    <option value="gala">Royal Gala / Red Carpet</option>
+                    <option value="wedding">Luxury Destination Wedding</option>
+                    <option value="business">Executive Summit</option>
+                    <option value="casual">VIP Cocktail Lounge</option>
                 </select>
+            </div>
+            <button class="btn-primary ios-btn" style="width: 100%; margin-top: 15px;" id="generate-ai-recommendation">Get AI Match</button>
+            <div id="ai-result-container" class="ai-result-box"></div>
+        </div>
+    </div>
+
+    <!-- Size Finder Modal -->
+    <div class="modal-overlay" id="fit-overlay"></div>
+    <div class="modal ios-glass-card" id="fit-modal">
+        <span class="close-btn" id="close-fit">&times;</span>
+        <div class="fit-modal-content">
+            <h2 class="gold-text"><i class="fa-solid fa-ruler-horizontal"></i> Couture Fit Calculator</h2>
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Enter measurements to find your custom atelier fit.</p>
+            <div class="form-group">
+                <label>Height (cm):</label>
+                <input type="number" id="fit-height" placeholder="e.g. 178" class="custom-input">
             </div>
             <div class="form-group">
-                <label>Preferred Style Vibe:</label>
-                <select id="ai-vibe">
-                    <option value="classic">Classic & Royal</option>
-                    <option value="modern">Modern & Edgy</option>
-                    <option value="minimal">Minimalist Elegance</option>
-                </select>
+                <label>Chest/Bust (inches):</label>
+                <input type="number" id="fit-chest" placeholder="e.g. 38" class="custom-input">
             </div>
-            <button class="btn-primary ios-btn" style="width: 100%; margin-top: 15px;" id="generate-ai-recommendation">Get AI Recommendation</button>
-            <div id="ai-result-container" class="ai-result-box"></div>
+            <button class="btn-primary ios-btn" style="width: 100%; margin-top: 10px;" onclick="calculateFit()">Calculate Ideal Size</button>
+            <div id="fit-result" style="margin-top: 15px; text-align: center; font-weight: bold;" class="gold-text"></div>
         </div>
     </div>
 
@@ -179,13 +200,9 @@
         <div class="privacy-content">
             <h2>Privacy Policy</h2>
             <p><strong>Effective Date: 2026</strong></p>
-            <p>At AURA COUTURE, we respect your privacy and are committed to protecting your personal data. This privacy policy informs you about how we handle your personal information when you visit our Atelier website.</p>
-            <h3>1. Data We Collect</h3>
-            <p>We collect information you provide directly, such as when you select garments, interact with our WhatsApp concierge, or save items to your wishlist.</p>
-            <h3>2. How We Use Data</h3>
-            <p>Your details are strictly used to fulfill custom order inquiries, customize personal styling recommendations, and enhance browsing experience.</p>
-            <h3>3. Security</h3>
-            <p>We implement strict encryption protocols to safeguard your personal selections and data integrity.</p>
+            <p>At AURA COUTURE, we respect your privacy and protect your data. Your choices and items are securely handled during checkout.</p>
+            <h3>1. Personal Data</h3>
+            <p>We collect order choices and contact preferences to fulfill bespoke luxury requests via WhatsApp Concierge.</p>
         </div>
     </div>
 
@@ -193,7 +210,7 @@
     <div class="cart-overlay" id="cart-overlay"></div>
     <div class="cart-drawer ios-glass" id="cart-drawer">
         <div class="cart-header">
-            <h3>Your Shopping Bag</h3>
+            <h3>Shopping Bag</h3>
             <span class="close-btn" id="close-cart">&times;</span>
         </div>
         <div class="cart-items" id="cart-items"></div>
@@ -215,23 +232,22 @@
 
     <!-- Thank You Modal -->
     <div class="modal ios-glass-card" id="thankyou-modal">
-        <div class="thankyou-content">
-            <div class="thankyou-icon"><i class="fa-solid fa-crown"></i></div>
+        <div class="thankyou-content" style="text-align: center;">
+            <i class="fa-solid fa-crown gold-text" style="font-size: 40px; margin-bottom: 15px;"></i>
             <h2>Thank You For Choosing AURA</h2>
-            <p>Your order request has been initiated successfully. Our personal couture stylist will connect with you via WhatsApp shortly.</p>
-            <button class="btn-primary ios-btn" onclick="closeThankYouModal()">Back To Atelier</button>
+            <p>Your request is sent! Our stylist will connect with you on WhatsApp shortly.</p>
+            <button class="btn-primary ios-btn" style="margin-top: 20px;" onclick="closeThankYouModal()">Back To Atelier</button>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">A U R A</div>
+            <div class="footer-logo shimmer-text">A U R A</div>
             <div class="footer-links">
                 <a href="#hero">Home</a>
                 <a href="#collection">Catalogue</a>
                 <a href="javascript:void(0)" id="open-privacy-link">Privacy Policy</a>
-                <a href="#about">Terms of Service</a>
             </div>
             <p class="footer-credit">Handcrafted with Excellence — <span>Made by ABHAY & SAHIL</span></p>
             <p class="copyright">&copy; 2026 AURA COUTURE. All Rights Reserved.</p>
