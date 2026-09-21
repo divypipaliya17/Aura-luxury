@@ -97,31 +97,11 @@ const rates = {
 
 document.addEventListener('DOMContentLoaded', () => {
     AOS.init({ duration: 1000, once: true });
-    initCustomCursor();
     renderProducts(products);
     renderSwiperProducts();
     initSwiper();
     setupEventListeners();
 });
-
-// Custom Animated Cursor Track
-function initCustomCursor() {
-    const dot = document.querySelector('.cursor-dot');
-    const outline = document.querySelector('.cursor-outline');
-
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-
-        dot.style.left = `${posX}px`;
-        dot.style.top = `${posY}px`;
-
-        outline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
-    });
-}
 
 function formatPrice(amountUSD) {
     const currency = rates[currentCurrency];
@@ -194,7 +174,7 @@ function toggleWishlist(id) {
 }
 
 function setupEventListeners() {
-    // Search
+    // Search Trigger
     document.getElementById('search-toggle')?.addEventListener('click', () => document.getElementById('search-container').classList.add('active'));
     document.getElementById('close-search')?.addEventListener('click', () => document.getElementById('search-container').classList.remove('active'));
 
@@ -203,7 +183,7 @@ function setupEventListeners() {
         renderProducts(products.filter(p => p.name.toLowerCase().includes(query)));
     });
 
-    // Modals
+    // Modals Handlers
     document.getElementById('ai-stylist-trigger')?.addEventListener('click', () => toggleModal('ai-stylist-modal', 'ai-modal-overlay', true));
     document.getElementById('hero-ai-btn')?.addEventListener('click', () => toggleModal('ai-stylist-modal', 'ai-modal-overlay', true));
     document.getElementById('close-ai-modal')?.addEventListener('click', () => toggleModal('ai-stylist-modal', 'ai-modal-overlay', false));
@@ -218,10 +198,25 @@ function setupEventListeners() {
     document.getElementById('close-cart')?.addEventListener('click', closeCart);
     document.getElementById('close-modal')?.addEventListener('click', closeModal);
 
+    // Currency Change
     document.getElementById('currency-select')?.addEventListener('change', (e) => {
         currentCurrency = e.target.value;
         renderProducts(products);
         updateCartUI();
+    });
+
+    // Category Filter Handlers
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const category = btn.getAttribute('data-filter');
+
+            if (category === 'all') renderProducts(products);
+            else if (category === 'sale') renderProducts(products.filter(p => p.isSale));
+            else renderProducts(products.filter(p => p.category === category));
+        });
     });
 
     document.getElementById('generate-ai-recommendation')?.addEventListener('click', generateAIRecommendation);
@@ -247,7 +242,7 @@ function calculateFit() {
     else if (chest <= 40) size = "EU 48/50 (Medium)";
     else if (chest <= 44) size = "EU 52/54 (Large)";
 
-    res.innerText = `Recommended Atelier Size: ${size}`;
+    res.innerText = `Recommended Size: ${size}`;
 }
 
 function generateAIRecommendation() {
