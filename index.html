@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AURA COUTURE | High Luxury Fashion</title>
+    <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper CSS for Swipe Feature -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,9 +28,9 @@
         <div class="brand-logo">A U R A</div>
         <ul class="nav-links">
             <li><a href="#hero">Home</a></li>
-            <li><a href="#collection">Masterpieces</a></li>
-            <li><a href="#collection">Womenswear</a></li>
-            <li><a href="#collection">Menswear</a></li>
+            <li><a href="#slider-section">Featured</a></li>
+            <li><a href="#collection">Collection</a></li>
+            <li><a href="#about">About Atelier</a></li>
         </ul>
         <div class="nav-icons">
             <div class="icon-wrap" id="wishlist-icon">
@@ -41,20 +44,37 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-content">
             <p class="hero-subtitle">Haute Couture Edition 2026</p>
             <h1 class="hero-title">Elegance In Pure Silk & Velvet</h1>
             <p class="hero-desc">Exquisite hand-tailored garments crafted with Italian silks, fine cashmere, and timeless craftsmanship.</p>
-            <a href="#collection" class="btn-primary glow-effect">Discover Collection</a>
+            <a href="#collection" class="btn-primary">Discover Collection</a>
         </div>
     </section>
 
-    <section id="collection" class="collection-section">
-        <h2 class="section-title reveal">Masterpiece Collection</h2>
-        <p class="section-subtitle reveal">Handcrafted garments designed for global connoisseurs</p>
+    <!-- NEW FEATURE: SWIPE CAROUSEL SECTION -->
+    <section class="swipe-section" id="slider-section">
+        <h2 class="section-title">Trending Masterpieces</h2>
+        <p class="section-subtitle">Swipe left or right to explore luxury highlights</p>
+        
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper" id="swipe-wrapper">
+                <!-- Dynamic Swipe Cards -->
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
 
-        <div class="filter-container reveal">
+    <!-- Full Grid Collection Section -->
+    <section id="collection" class="collection-section">
+        <h2 class="section-title">Full Catalogue</h2>
+        <p class="section-subtitle">Handcrafted garments designed for global connoisseurs</p>
+
+        <div class="filter-container">
             <button class="filter-btn active" data-filter="all">All</button>
             <button class="filter-btn" data-filter="womenswear">Womenswear</button>
             <button class="filter-btn" data-filter="menswear">Menswear</button>
@@ -65,7 +85,15 @@
         </div>
     </section>
 
-    <!-- Cart Overlay & Drawer -->
+    <!-- Brand Story / About Section (Big Site Feel) -->
+    <section class="about-section" id="about">
+        <div class="about-card">
+            <h2>The House of AURA</h2>
+            <p>Founded in Milano, AURA represents the pinnacle of modern luxury tailoring. Every piece is individually crafted by master artisans with decades of heritage experience.</p>
+        </div>
+    </section>
+
+    <!-- Cart Drawer -->
     <div class="cart-overlay" id="cart-overlay"></div>
     <div class="cart-drawer" id="cart-drawer">
         <div class="cart-header">
@@ -93,6 +121,8 @@
         <p>&copy; 2026 AURA COUTURE. All Rights Reserved.</p>
     </footer>
 
+    <!-- Swiper JS for Swipe Feature -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js" defer></script>
 </body>
 </html>
