@@ -13,7 +13,12 @@
 <body>
 
     <div class="announcement-bar">
-        ✨ Complimentary Worldwide Express Courier & Personal Styling
+        <span>✨ Complimentary Worldwide Express Courier & Personal Styling</span>
+        <select id="currency-select" class="currency-dropdown">
+            <option value="USD">USD ($)</option>
+            <option value="INR">INR (₹)</option>
+            <option value="EUR">EUR (€)</option>
+        </select>
     </div>
 
     <nav class="navbar">
@@ -25,25 +30,31 @@
             <li><a href="#collection">Menswear</a></li>
         </ul>
         <div class="nav-icons">
-            <div class="cart-icon-wrap" id="cart-icon">
-                <i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i>
-                <span class="cart-count" id="cart-count">0</span>
+            <div class="icon-wrap" id="wishlist-icon">
+                <i class="fa-regular fa-heart"></i>
+                <span class="badge" id="wishlist-count">0</span>
+            </div>
+            <div class="icon-wrap" id="cart-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="badge" id="cart-count">0</span>
             </div>
         </div>
     </nav>
 
     <section class="hero" id="hero">
-        <p class="hero-subtitle">Haute Couture Edition 2026</p>
-        <h1 class="hero-title">Elegance In Pure Silk & Velvet</h1>
-        <p class="hero-desc">Exquisite hand-tailored garments crafted with Italian silks, fine cashmere, and timeless craftsmanship.</p>
-        <a href="#collection" class="btn-primary">Discover Collection</a>
+        <div class="hero-content">
+            <p class="hero-subtitle">Haute Couture Edition 2026</p>
+            <h1 class="hero-title">Elegance In Pure Silk & Velvet</h1>
+            <p class="hero-desc">Exquisite hand-tailored garments crafted with Italian silks, fine cashmere, and timeless craftsmanship.</p>
+            <a href="#collection" class="btn-primary glow-effect">Discover Collection</a>
+        </div>
     </section>
 
     <section id="collection" class="collection-section">
-        <h2 class="section-title">Masterpiece Collection</h2>
-        <p class="section-subtitle">Handcrafted garments designed for global connoisseurs</p>
+        <h2 class="section-title reveal">Masterpiece Collection</h2>
+        <p class="section-subtitle reveal">Handcrafted garments designed for global connoisseurs</p>
 
-        <div class="filter-container">
+        <div class="filter-container reveal">
             <button class="filter-btn active" data-filter="all">All</button>
             <button class="filter-btn" data-filter="womenswear">Womenswear</button>
             <button class="filter-btn" data-filter="menswear">Menswear</button>
@@ -61,13 +72,11 @@
             <h3>Your Shopping Bag</h3>
             <span class="close-btn" id="close-cart">&times;</span>
         </div>
-        <div class="cart-items" id="cart-items">
-            <!-- Cart Items -->
-        </div>
+        <div class="cart-items" id="cart-items"></div>
         <div class="cart-footer">
             <div class="cart-total-wrap">
                 <span>Total:</span>
-                <span id="cart-total" style="color: var(--primary-gold);">$0</span>
+                <span id="cart-total" class="gold-text">$0</span>
             </div>
             <button class="btn-primary" style="width: 100%;" id="whatsapp-checkout">Checkout via WhatsApp</button>
         </div>
