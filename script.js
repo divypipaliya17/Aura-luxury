@@ -30,6 +30,22 @@ const products = [
         priceUSD: 2100,
         image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800",
         description: "High-end designer trench coat featuring gold thread accents and custom silk lining."
+    },
+    {
+        id: 5,
+        name: "Gold-Embroidered Blazer",
+        category: "menswear",
+        priceUSD: 2900,
+        image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800",
+        description: "Bespoke blazer embellished with intricate metallic thread embroidery."
+    },
+    {
+        id: 6,
+        name: "Satin Silk Corset Dress",
+        category: "womenswear",
+        priceUSD: 2750,
+        image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=800",
+        description: "Sculptural satin corset dress designed for red-carpet elegance."
     }
 ];
 
@@ -45,8 +61,9 @@ const rates = {
 
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts(products);
+    renderSwiperProducts();
+    initSwiper();
     setupEventListeners();
-    initScrollReveal();
 });
 
 function formatPrice(amountUSD) {
@@ -55,34 +72,69 @@ function formatPrice(amountUSD) {
     return `${currency.symbol}${converted.toLocaleString()}`;
 }
 
+function createProductCardHTML(product) {
+    const isLiked = wishlist.includes(product.id) ? 'liked' : '';
+    const heartIcon = wishlist.includes(product.id) ? 'fa-solid' : 'fa-regular';
+
+    return `
+        <div class="product-card">
+            <div class="wishlist-btn ${isLiked}" onclick="toggleWishlist(${product.id})">
+                <i class="${heartIcon} fa-heart"></i>
+            </div>
+            <div class="product-image-wrap">
+                <img src="${product.image}" alt="${product.name}" class="product-image">
+                <div class="product-actions">
+                    <button class="btn-action" onclick="openQuickView(${product.id})">Quick View</button>
+                    <button class="btn-action" onclick="addToCart(${product.id})">Add to Bag</button>
+                </div>
+            </div>
+            <div class="product-info">
+                <p class="product-category">${product.category.toUpperCase()}</p>
+                <h3 class="product-title">${product.name}</h3>
+                <p class="product-price">${formatPrice(product.priceUSD)}</p>
+            </div>
+        </div>
+    `;
+}
+
 function renderProducts(items) {
     const grid = document.getElementById('product-grid');
     if (!grid) return;
+    grid.innerHTML = items.map(product => createProductCardHTML(product)).join('');
+}
 
-    grid.innerHTML = items.map(product => {
-        const isLiked = wishlist.includes(product.id) ? 'liked' : '';
-        const heartIcon = wishlist.includes(product.id) ? 'fa-solid' : 'fa-regular';
+function renderSwiperProducts() {
+    const wrapper = document.getElementById('swipe-wrapper');
+    if (!wrapper) return;
+    wrapper.innerHTML = products.map(product => `
+        <div class="swiper-slide">
+            ${createProductCardHTML(product)}
+        </div>
+    `).join('');
+}
 
-        return `
-            <div class="product-card reveal active">
-                <div class="wishlist-btn ${isLiked}" onclick="toggleWishlist(${product.id})">
-                    <i class="${heartIcon} fa-heart"></i>
-                </div>
-                <div class="product-image-wrap">
-                    <img src="${product.image}" alt="${product.name}" class="product-image">
-                    <div class="product-actions">
-                        <button class="btn-action" onclick="openQuickView(${product.id})">Quick View</button>
-                        <button class="btn-action" onclick="addToCart(${product.id})">Add to Bag</button>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <p class="product-category">${product.category.toUpperCase()}</p>
-                    <h3 class="product-title">${product.name}</h3>
-                    <p class="product-price">${formatPrice(product.priceUSD)}</p>
-                </div>
-            </div>
-        `;
-    }).join('');
+function initSwiper() {
+    new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 3500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            1024: { slidesPerView: 3, spaceBetween: 30 }
+        }
+    });
 }
 
 function toggleWishlist(id) {
@@ -93,17 +145,16 @@ function toggleWishlist(id) {
     }
     document.getElementById('wishlist-count').innerText = wishlist.length;
     renderProducts(products);
+    renderSwiperProducts();
 }
 
 function setupEventListeners() {
-    const currencySelect = document.getElementById('currency-select');
-    if (currencySelect) {
-        currencySelect.addEventListener('change', (e) => {
-            currentCurrency = e.target.value;
-            renderProducts(products);
-            updateCartUI();
-        });
-    }
+    document.getElementById('currency-select')?.addEventListener('change', (e) => {
+        currentCurrency = e.target.value;
+        renderProducts(products);
+        renderSwiperProducts();
+        updateCartUI();
+    });
 
     const filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach(btn => {
@@ -241,17 +292,4 @@ function checkoutWhatsApp() {
 
     message += `%0A*Total Amount:* ${formatPrice(totalUSD)}`;
     window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
-}
-
-function initScrollReveal() {
-    const reveals = document.querySelectorAll('.reveal');
-    window.addEventListener('scroll', () => {
-        const windowHeight = window.innerHeight;
-        reveals.forEach(reveal => {
-            const elementTop = reveal.getBoundingClientRect().top;
-            if (elementTop < windowHeight - 100) {
-                reveal.classList.add('active');
-            }
-        });
-    });
 }
