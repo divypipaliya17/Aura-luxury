@@ -4,447 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AURA COUTURE | High Luxury Fashion</title>
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root {
-            --bg-black: #0B0B0C;
-            --card-bg: #141416;
-            --primary-gold: #D4AF37;
-            --gold-hover: #F3E5AB;
-            --text-light: #F5F5F7;
-            --text-muted: #A1A1A6;
-            --border-color: rgba(212, 175, 55, 0.2);
-            --font-heading: 'Cinzel', serif;
-            --font-body: 'Montserrat', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: var(--font-body);
-        }
-
-        body {
-            background-color: var(--bg-black);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* Announcement Bar */
-        .announcement-bar {
-            background: linear-gradient(90deg, #111, #1a1a1a, #111);
-            color: var(--primary-gold);
-            text-align: center;
-            padding: 8px 15px;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        /* Navigation */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background-color: rgba(11, 11, 12, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .brand-logo {
-            font-family: var(--font-heading);
-            font-size: 26px;
-            font-weight: 700;
-            letter-spacing: 6px;
-            color: var(--primary-gold);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-gold);
-        }
-
-        .nav-icons {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .cart-icon-wrap {
-            position: relative;
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -10px;
-            background-color: var(--primary-gold);
-            color: var(--bg-black);
-            font-size: 10px;
-            font-weight: bold;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 85vh;
-            background: linear-gradient(rgba(11, 11, 12, 0.6), rgba(11, 11, 12, 0.8)), 
-                        url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero-subtitle {
-            color: var(--primary-gold);
-            font-size: 13px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .hero-title {
-            font-family: var(--font-heading);
-            font-size: 52px;
-            font-weight: 400;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            max-width: 800px;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            padding: 14px 35px;
-            background-color: var(--primary-gold);
-            color: var(--bg-black);
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border: 1px solid var(--primary-gold);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-primary:hover {
-            background-color: transparent;
-            color: var(--primary-gold);
-        }
-
-        /* Section Styling */
-        .section-title {
-            text-align: center;
-            font-family: var(--font-heading);
-            font-size: 32px;
-            letter-spacing: 3px;
-            margin: 60px 0 10px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 13px;
-            margin-bottom: 40px;
-        }
-
-        /* Filters */
-        .filter-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-light);
-            padding: 8px 20px;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background-color: var(--primary-gold);
-            color: var(--bg-black);
-        }
-
-        /* Product Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 0 5% 80px;
-        }
-
-        .product-card {
-            background-color: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--border-color);
-        }
-
-        .product-image-wrap {
-            position: relative;
-            overflow: hidden;
-            height: 380px;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.05);
-        }
-
-        .product-actions {
-            position: absolute;
-            bottom: -50px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            transition: bottom 0.3s;
-        }
-
-        .product-card:hover .product-actions {
-            bottom: 0;
-        }
-
-        .btn-action {
-            flex: 1;
-            padding: 12px;
-            background-color: rgba(11, 11, 12, 0.9);
-            color: var(--text-light);
-            border: none;
-            font-size: 11px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn-action:hover {
-            background-color: var(--primary-gold);
-            color: var(--bg-black);
-        }
-
-        .product-info {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .product-category {
-            font-size: 10px;
-            color: var(--primary-gold);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
-
-        .product-title {
-            font-family: var(--font-heading);
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        .product-price {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        /* Cart Drawer */
-        .cart-drawer {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 380px;
-            height: 100vh;
-            background-color: var(--card-bg);
-            box-shadow: -5px 0 25px rgba(0,0,0,0.8);
-            z-index: 2000;
-            transition: right 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            padding: 25px;
-        }
-
-        .cart-drawer.active {
-            right: 0;
-        }
-
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
-            font-family: var(--font-heading);
-        }
-
-        .close-btn {
-            font-size: 20px;
-            cursor: pointer;
-            color: var(--text-muted);
-        }
-
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px 0;
-        }
-
-        .cart-item {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 15px;
-        }
-
-        .cart-item img {
-            width: 70px;
-            height: 90px;
-            object-fit: cover;
-        }
-
-        .cart-item-details h4 {
-            font-size: 14px;
-            font-family: var(--font-heading);
-        }
-
-        .cart-item-price {
-            color: var(--primary-gold);
-            font-size: 13px;
-            margin: 5px 0;
-        }
-
-        .cart-footer {
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
-        }
-
-        .cart-total-wrap {
-            display: flex;
-            justify-content: space-between;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .cart-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0,0,0,0.7);
-            z-index: 1500;
-            display: none;
-        }
-
-        .cart-overlay.active {
-            display: block;
-        }
-
-        /* Modal */
-        .modal {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            max-width: 700px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            z-index: 3000;
-            padding: 30px;
-            display: none;
-        }
-
-        .modal.active {
-            display: block;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px;
-            background-color: #050505;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-muted);
-            font-size: 12px;
-        }
-
-        @media (max-width: 768px) {
-            .hero-title { font-size: 32px; }
-            .cart-drawer { width: 100%; right: -100%; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="announcement-bar">
-        ✨ Complimentary Worldwide Express Delivery & Personal Styling Service
+        ✨ Complimentary Worldwide Express Courier & Personal Styling
     </div>
 
     <nav class="navbar">
         <div class="brand-logo">A U R A</div>
         <ul class="nav-links">
             <li><a href="#hero">Home</a></li>
-            <li><a href="#collection">Collection</a></li>
-            <li><a href="#atelier">Atelier</a></li>
+            <li><a href="#collection">Masterpieces</a></li>
+            <li><a href="#collection">Womenswear</a></li>
+            <li><a href="#collection">Menswear</a></li>
         </ul>
         <div class="nav-icons">
             <div class="cart-icon-wrap" id="cart-icon">
@@ -457,30 +35,31 @@
     <section class="hero" id="hero">
         <p class="hero-subtitle">Haute Couture Edition 2026</p>
         <h1 class="hero-title">Elegance In Pure Silk & Velvet</h1>
+        <p class="hero-desc">Exquisite hand-tailored garments crafted with Italian silks, fine cashmere, and timeless craftsmanship.</p>
         <a href="#collection" class="btn-primary">Discover Collection</a>
     </section>
 
-    <section id="collection">
+    <section id="collection" class="collection-section">
         <h2 class="section-title">Masterpiece Collection</h2>
         <p class="section-subtitle">Handcrafted garments designed for global connoisseurs</p>
 
         <div class="filter-container">
-            <button class="filter-btn active" onclick="filterProducts('all')">All</button>
-            <button class="filter-btn" onclick="filterProducts('womenswear')">Womenswear</button>
-            <button class="filter-btn" onclick="filterProducts('menswear')">Menswear</button>
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="womenswear">Womenswear</button>
+            <button class="filter-btn" data-filter="menswear">Menswear</button>
         </div>
 
         <div class="products-grid" id="product-grid">
-            <!-- Dynamic Products Loading -->
+            <!-- Dynamic Products -->
         </div>
     </section>
 
     <!-- Cart Overlay & Drawer -->
-    <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+    <div class="cart-overlay" id="cart-overlay"></div>
     <div class="cart-drawer" id="cart-drawer">
         <div class="cart-header">
             <h3>Your Shopping Bag</h3>
-            <span class="close-btn" onclick="closeCart()">&times;</span>
+            <span class="close-btn" id="close-cart">&times;</span>
         </div>
         <div class="cart-items" id="cart-items">
             <!-- Cart Items -->
@@ -490,165 +69,21 @@
                 <span>Total:</span>
                 <span id="cart-total" style="color: var(--primary-gold);">$0</span>
             </div>
-            <button class="btn-primary" style="width: 100%;" onclick="checkoutWhatsApp()">Checkout via WhatsApp</button>
+            <button class="btn-primary" style="width: 100%;" id="whatsapp-checkout">Checkout via WhatsApp</button>
         </div>
     </div>
 
     <!-- Quick View Modal -->
+    <div class="modal-overlay" id="modal-overlay"></div>
     <div class="modal" id="quickview-modal">
-        <span class="close-btn" onclick="closeModal()" style="float: right;">&times;</span>
-        <div id="modal-content" style="clear: both; margin-top: 10px;"></div>
+        <span class="close-btn" id="close-modal" style="float: right;">&times;</span>
+        <div id="quickview-body" style="clear: both; margin-top: 10px;"></div>
     </div>
 
     <footer>
         <p>&copy; 2026 AURA COUTURE. All Rights Reserved.</p>
     </footer>
 
-    <script>
-        const products = [
-            {
-                id: 1,
-                name: "Royal Velvet Evening Tuxedo",
-                category: "menswear",
-                price: 2450,
-                image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=800",
-                description: "Hand-tailored velvet tuxedo crafted with Italian silk lapels and custom gold buttons."
-            },
-            {
-                id: 2,
-                name: "Silk Chiffon Couture Gown",
-                category: "womenswear",
-                price: 3200,
-                image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=800",
-                description: "Pure mulberry silk gown with delicate hand embroidery."
-            },
-            {
-                id: 3,
-                name: "Cashmere Double-Breasted Coat",
-                category: "menswear",
-                price: 1850,
-                image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=800",
-                description: "100% Himalayan cashmere coat with tailored structured shoulders."
-            },
-            {
-                id: 4,
-                name: "Embroidered Atelier Trench",
-                category: "womenswear",
-                price: 2100,
-                image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800",
-                description: "High-end designer trench coat featuring gold thread accents."
-            }
-        ];
-
-        let cart = [];
-
-        function renderProducts(items) {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = items.map(p => `
-                <div class="product-card">
-                    <div class="product-image-wrap">
-                        <img src="${p.image}" alt="${p.name}" class="product-image">
-                        <div class="product-actions">
-                            <button class="btn-action" onclick="openQuickView(${p.id})">Quick View</button>
-                            <button class="btn-action" onclick="addToCart(${p.id})">Add to Bag</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <p class="product-category">${p.category}</p>
-                        <h3 class="product-title">${p.name}</h3>
-                        <p class="product-price">$${p.price.toLocaleString()}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function filterProducts(category) {
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            if (category === 'all') {
-                renderProducts(products);
-            } else {
-                const filtered = products.filter(p => p.category === category);
-                renderProducts(filtered);
-            }
-        }
-
-        function addToCart(id) {
-            const product = products.find(p => p.id === id);
-            const item = cart.find(i => i.id === id);
-            if (item) {
-                item.qty++;
-            } else {
-                cart.push({ ...product, qty: 1 });
-            }
-            updateCart();
-            openCart();
-        }
-
-        function updateCart() {
-            const cartContainer = document.getElementById('cart-items');
-            const totalElement = document.getElementById('cart-total');
-            const countElement = document.getElementById('cart-count');
-
-            let total = 0;
-            let count = 0;
-
-            cartContainer.innerHTML = cart.map(item => {
-                total += item.price * item.qty;
-                count += item.qty;
-                return `
-                    <div class="cart-item">
-                        <img src="${item.image}">
-                        <div class="cart-item-details">
-                            <h4>${item.name}</h4>
-                            <p class="cart-item-price">$${item.price.toLocaleString()} x ${item.qty}</p>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
-            totalElement.innerText = `$${total.toLocaleString()}`;
-            countElement.innerText = count;
-        }
-
-        function openCart() {
-            document.getElementById('cart-drawer').classList.add('active');
-            document.getElementById('cart-overlay').classList.add('active');
-        }
-
-        function closeCart() {
-            document.getElementById('cart-drawer').classList.remove('active');
-            document.getElementById('cart-overlay').classList.remove('active');
-        }
-
-        function openQuickView(id) {
-            const p = products.find(item => item.id === id);
-            document.getElementById('modal-content').innerHTML = `
-                <h2>${p.name}</h2>
-                <p style="color: var(--primary-gold); margin: 10px 0;">$${p.price}</p>
-                <p>${p.description}</p>
-                <button class="btn-primary" style="margin-top: 15px; width: 100%;" onclick="addToCart(${p.id}); closeModal();">Add To Cart</button>
-            `;
-            document.getElementById('quickview-modal').classList.add('active');
-            document.getElementById('cart-overlay').classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('quickview-modal').classList.remove('active');
-            document.getElementById('cart-overlay').classList.remove('active');
-        }
-
-        function checkoutWhatsApp() {
-            if (cart.length === 0) return alert("Your bag is empty!");
-            let msg = "Hello AURA COUTURE, I want to purchase:%0A";
-            cart.forEach(i => msg += `- ${i.name} (x${i.qty})%0A`);
-            window.open(`https://wa.me/919876543210?text=${msg}`, '_blank');
-        }
-
-        document.getElementById('cart-icon').addEventListener('click', openCart);
-        renderProducts(products);
-    </script>
+    <script src="script.js" defer></script>
 </body>
 </html>
