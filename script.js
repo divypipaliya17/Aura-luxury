@@ -99,18 +99,12 @@ function createProductCardHTML(product) {
 
 function renderProducts(items) {
     const grid = document.getElementById('product-grid');
-    if (!grid) return;
-    grid.innerHTML = items.map(product => createProductCardHTML(product)).join('');
+    if (grid) grid.innerHTML = items.map(product => createProductCardHTML(product)).join('');
 }
 
 function renderSwiperProducts() {
     const wrapper = document.getElementById('swipe-wrapper');
-    if (!wrapper) return;
-    wrapper.innerHTML = products.map(product => `
-        <div class="swiper-slide">
-            ${createProductCardHTML(product)}
-        </div>
-    `).join('');
+    if (wrapper) wrapper.innerHTML = products.map(product => `<div class="swiper-slide">${createProductCardHTML(product)}</div>`).join('');
 }
 
 function initSwiper() {
@@ -118,18 +112,9 @@ function initSwiper() {
         slidesPerView: 1,
         spaceBetween: 20,
         loop: true,
-        autoplay: {
-            delay: 3500,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
+        autoplay: { delay: 3500, disableOnInteraction: false },
+        pagination: { el: ".swiper-pagination", clickable: true },
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
         breakpoints: {
             640: { slidesPerView: 2, spaceBetween: 20 },
             1024: { slidesPerView: 3, spaceBetween: 30 }
@@ -237,9 +222,7 @@ function changeQty(id, change) {
     if (!item) return;
 
     item.quantity += change;
-    if (item.quantity <= 0) {
-        cart = cart.filter(i => i.id !== id);
-    }
+    if (item.quantity <= 0) cart = cart.filter(i => i.id !== id);
     updateCartUI();
 }
 
@@ -259,13 +242,13 @@ function openQuickView(id) {
 
     document.getElementById('quickview-body').innerHTML = `
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center;">
-            <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 280px; object-fit: cover;">
+            <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 280px; object-fit: cover; border-radius: 12px;">
             <div>
                 <p style="color: var(--primary-gold); font-size: 11px; letter-spacing: 2px;">${product.category.toUpperCase()}</p>
                 <h2 style="font-family: var(--font-heading); font-size: 20px; margin: 8px 0;">${product.name}</h2>
                 <p style="color: var(--primary-gold); font-size: 18px; margin-bottom: 10px;">${formatPrice(product.priceUSD)}</p>
                 <p style="color: #aaa; font-size: 12px; margin-bottom: 15px;">${product.description}</p>
-                <button class="btn-primary" style="width: 100%;" onclick="addToCart(${product.id}); closeModal();">Add to Shopping Bag</button>
+                <button class="btn-primary ios-btn" style="width: 100%;" onclick="addToCart(${product.id}); closeModal();">Add to Bag</button>
             </div>
         </div>
     `;
@@ -292,4 +275,17 @@ function checkoutWhatsApp() {
 
     message += `%0A*Total Amount:* ${formatPrice(totalUSD)}`;
     window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
+
+    closeCart();
+    setTimeout(() => {
+        document.getElementById('thankyou-modal')?.classList.add('active');
+        document.getElementById('modal-overlay')?.classList.add('active');
+    }, 400);
+}
+
+function closeThankYouModal() {
+    document.getElementById('thankyou-modal')?.classList.remove('active');
+    document.getElementById('modal-overlay')?.classList.remove('active');
+    cart = [];
+    updateCartUI();
 }
