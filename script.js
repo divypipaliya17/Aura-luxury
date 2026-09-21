@@ -3,7 +3,7 @@ const products = [
         id: 1,
         name: "Royal Velvet Evening Tuxedo",
         category: "menswear",
-        price: 2450,
+        priceUSD: 2450,
         image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=800",
         description: "Hand-tailored velvet tuxedo crafted with Italian silk lapels and custom gold-plated buttons."
     },
@@ -11,7 +11,7 @@ const products = [
         id: 2,
         name: "Silk Chiffon Couture Gown",
         category: "womenswear",
-        price: 3200,
+        priceUSD: 3200,
         image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=800",
         description: "Pure mulberry silk gown featured with delicate hand embroidery and a dramatic train."
     },
@@ -19,7 +19,7 @@ const products = [
         id: 3,
         name: "Cashmere Double-Breasted Coat",
         category: "menswear",
-        price: 1850,
+        priceUSD: 1850,
         image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=800",
         description: "100% Himalayan cashmere winter coat with tailored structured shoulders."
     },
@@ -27,42 +27,84 @@ const products = [
         id: 4,
         name: "Embroidered Atelier Trench",
         category: "womenswear",
-        price: 2100,
+        priceUSD: 2100,
         image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800",
         description: "High-end designer trench coat featuring gold thread accents and custom silk lining."
     }
 ];
 
 let cart = [];
+let wishlist = [];
+let currentCurrency = 'USD';
+
+const rates = {
+    USD: { symbol: '$', rate: 1 },
+    INR: { symbol: '₹', rate: 83 },
+    EUR: { symbol: '€', rate: 0.92 }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts(products);
     setupEventListeners();
+    initScrollReveal();
 });
 
-function renderProducts(items) {
-    const productGrid = document.getElementById('product-grid');
-    if (!productGrid) return;
+function formatPrice(amountUSD) {
+    const currency = rates[currentCurrency];
+    const converted = Math.round(amountUSD * currency.rate);
+    return `${currency.symbol}${converted.toLocaleString()}`;
+}
 
-    productGrid.innerHTML = items.map(product => `
-        <div class="product-card">
-            <div class="product-image-wrap">
-                <img src="${product.image}" alt="${product.name}" class="product-image">
-                <div class="product-actions">
-                    <button class="btn-action" onclick="openQuickView(${product.id})">Quick View</button>
-                    <button class="btn-action" onclick="addToCart(${product.id})">Add to Bag</button>
+function renderProducts(items) {
+    const grid = document.getElementById('product-grid');
+    if (!grid) return;
+
+    grid.innerHTML = items.map(product => {
+        const isLiked = wishlist.includes(product.id) ? 'liked' : '';
+        const heartIcon = wishlist.includes(product.id) ? 'fa-solid' : 'fa-regular';
+
+        return `
+            <div class="product-card reveal active">
+                <div class="wishlist-btn ${isLiked}" onclick="toggleWishlist(${product.id})">
+                    <i class="${heartIcon} fa-heart"></i>
+                </div>
+                <div class="product-image-wrap">
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-actions">
+                        <button class="btn-action" onclick="openQuickView(${product.id})">Quick View</button>
+                        <button class="btn-action" onclick="addToCart(${product.id})">Add to Bag</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">${product.category.toUpperCase()}</p>
+                    <h3 class="product-title">${product.name}</h3>
+                    <p class="product-price">${formatPrice(product.priceUSD)}</p>
                 </div>
             </div>
-            <div class="product-info">
-                <p class="product-category">${product.category.toUpperCase()}</p>
-                <h3 class="product-title">${product.name}</h3>
-                <p class="product-price">$${product.price.toLocaleString()}</p>
-            </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
+}
+
+function toggleWishlist(id) {
+    if (wishlist.includes(id)) {
+        wishlist = wishlist.filter(item => item !== id);
+    } else {
+        wishlist.push(id);
+    }
+    document.getElementById('wishlist-count').innerText = wishlist.length;
+    renderProducts(products);
 }
 
 function setupEventListeners() {
+    const currencySelect = document.getElementById('currency-select');
+    if (currencySelect) {
+        currencySelect.addEventListener('change', (e) => {
+            currentCurrency = e.target.value;
+            renderProducts(products);
+            updateCartUI();
+        });
+    }
+
     const filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -108,23 +150,23 @@ function updateCartUI() {
 
     if (cart.length === 0) {
         container.innerHTML = `<p style="text-align:center; color:#888; padding: 40px 0;">Your bag is empty</p>`;
-        totalEl.innerText = '$0';
+        totalEl.innerText = formatPrice(0);
         countEl.innerText = '0';
         return;
     }
 
-    let total = 0;
+    let totalUSD = 0;
     let count = 0;
 
     container.innerHTML = cart.map(item => {
-        total += item.price * item.quantity;
+        totalUSD += item.priceUSD * item.quantity;
         count += item.quantity;
         return `
             <div class="cart-item">
                 <img src="${item.image}" alt="${item.name}">
                 <div class="cart-item-details">
                     <h4>${item.name}</h4>
-                    <p class="cart-item-price">$${item.price.toLocaleString()}</p>
+                    <p class="cart-item-price">${formatPrice(item.priceUSD)}</p>
                     <div class="cart-item-qty">
                         <button onclick="changeQty(${item.id}, -1)">-</button>
                         <span>${item.quantity}</span>
@@ -135,7 +177,7 @@ function updateCartUI() {
         `;
     }).join('');
 
-    totalEl.innerText = `$${total.toLocaleString()}`;
+    totalEl.innerText = formatPrice(totalUSD);
     countEl.innerText = count;
 }
 
@@ -170,7 +212,7 @@ function openQuickView(id) {
             <div>
                 <p style="color: var(--primary-gold); font-size: 11px; letter-spacing: 2px;">${product.category.toUpperCase()}</p>
                 <h2 style="font-family: var(--font-heading); font-size: 20px; margin: 8px 0;">${product.name}</h2>
-                <p style="color: var(--primary-gold); font-size: 18px; margin-bottom: 10px;">$${product.price.toLocaleString()}</p>
+                <p style="color: var(--primary-gold); font-size: 18px; margin-bottom: 10px;">${formatPrice(product.priceUSD)}</p>
                 <p style="color: #aaa; font-size: 12px; margin-bottom: 15px;">${product.description}</p>
                 <button class="btn-primary" style="width: 100%;" onclick="addToCart(${product.id}); closeModal();">Add to Shopping Bag</button>
             </div>
@@ -190,13 +232,26 @@ function checkoutWhatsApp() {
     if (cart.length === 0) return alert("Your bag is empty!");
 
     let message = "Hello AURA COUTURE, I would like to place an order:%0A%0A";
-    let total = 0;
+    let totalUSD = 0;
 
     cart.forEach((item, index) => {
-        message += `${index + 1}. *${item.name}* (x${item.quantity}) - $${(item.price * item.quantity).toLocaleString()}%0A`;
-        total += item.price * item.quantity;
+        message += `${index + 1}. *${item.name}* (x${item.quantity}) - ${formatPrice(item.priceUSD * item.quantity)}%0A`;
+        totalUSD += item.priceUSD * item.quantity;
     });
 
-    message += `%0A*Total Amount:* $${total.toLocaleString()}`;
+    message += `%0A*Total Amount:* ${formatPrice(totalUSD)}`;
     window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
+}
+
+function initScrollReveal() {
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+        const windowHeight = window.innerHeight;
+        reveals.forEach(reveal => {
+            const elementTop = reveal.getBoundingClientRect().top;
+            if (elementTop < windowHeight - 100) {
+                reveal.classList.add('active');
+            }
+        });
+    });
 }
