@@ -30,12 +30,12 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#offers">Offers</a></li>
             <li><a href="#catalogue">Catalogue</a></li>
-            <li><a href="#atelier">Atelier</a></li>
+            <li><a href="#vip">VIP Atelier</a></li>
         </ul>
         <div class="nav-right">
             <!-- AI BUY BUTTON -->
             <button class="btn-gold btn-ai pulse-glow" id="ai-buy-btn">
-                <i class="fa-solid fa-wand-magic-sparkles"></i> Buy with AI
+                <i class="fa-solid fa-wand-magic-sparkles"></i> AI Stylist
             </button>
 
             <!-- AUTH BUTTONS -->
@@ -49,8 +49,14 @@
                 <button id="logout-btn" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i></button>
             </div>
 
+            <!-- WISHLIST ICON -->
+            <div class="cart-icon-wrap" id="wishlist-icon" title="Wishlist">
+                <i class="fa-regular fa-heart"></i>
+                <div class="cart-badge" id="wishlist-count">0</div>
+            </div>
+
             <!-- CART ICON -->
-            <div class="cart-icon-wrap" id="cart-icon">
+            <div class="cart-icon-wrap" id="cart-icon" title="Shopping Bag">
                 <i class="fa-solid fa-bag-shopping"></i>
                 <div class="cart-badge" id="cart-count">0</div>
             </div>
@@ -64,7 +70,7 @@
             <h1 class="glow-head">BESPOKE LUXURY</h1>
             <p>Experience haute couture curated with artificial intelligence & timeless craftsmanship.</p>
             <div class="hero-btns">
-                <a href="#catalogue" class="btn-gold">Explore Collection</a>
+                <a href="#catalogue" class="btn-gold">Explore 30+ Outfits</a>
                 <button class="btn-gold btn-ai" id="hero-ai-btn"><i class="fa-solid fa-sparkles"></i> AI Fashion Assistant</button>
             </div>
         </div>
@@ -98,22 +104,67 @@
         </div>
     </section>
 
-    <!-- CATEGORY FILTER BAR -->
-    <div class="category-filter-wrap">
-        <button class="filter-btn active" data-category="all">All Collection</button>
-        <button class="filter-btn" data-category="Men">Men's Bespoke</button>
-        <button class="filter-btn" data-category="Women">Women's Couture</button>
-    </div>
+    <!-- INTERACTIVE SEARCH & CATEGORY FILTER BAR -->
+    <section class="filter-section">
+        <div class="search-box-wrap">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="search-input" placeholder="Search silk, tuxedo, gown, velvet...">
+        </div>
+
+        <div class="category-filter-wrap">
+            <button class="filter-btn active" data-category="all">All Outfits (30)</button>
+            <button class="filter-btn" data-category="Men">Men's Bespoke (15)</button>
+            <button class="filter-btn" data-category="Women">Women's Couture (15)</button>
+        </div>
+    </section>
 
     <!-- PRODUCT CATALOGUE -->
     <section id="catalogue">
         <div class="section-title-wrap">
-            <h2 class="section-title shimmer-text">Trending Masterpieces</h2>
-            <div class="section-subtitle">Swipe or select to explore 18 curated couture outfits</div>
+            <h2 class="section-title shimmer-text">Haute Couture Collection</h2>
+            <div class="section-subtitle">Curated with precision, crafted for perfection</div>
         </div>
 
         <div class="product-grid" id="product-grid">
-            <!-- Dynamic 18 Products Injected by JS -->
+            <!-- Dynamic 30 Products Injected by JS -->
+        </div>
+    </section>
+
+    <!-- QUICK VIEW MODAL -->
+    <div class="quick-modal" id="quick-modal">
+        <div class="quick-modal-content">
+            <span id="close-quick-modal" class="close-btn"><i class="fa-solid fa-xmark"></i></span>
+            <div class="quick-modal-body">
+                <img id="quick-img" src="" alt="Product Image">
+                <div class="quick-info">
+                    <span id="quick-category" class="product-tag">Category</span>
+                    <h2 id="quick-title">Product Title</h2>
+                    <div id="quick-price" class="product-price">$0</div>
+                    <p class="quick-desc">Hand-crafted using 100% organic Italian silk & velvet finish with custom AI tailored dimensions.</p>
+                    <div class="size-selector">
+                        <span>Select Size:</span>
+                        <div class="size-btns">
+                            <button class="size-btn">S</button>
+                            <button class="size-btn active">M</button>
+                            <button class="size-btn">L</button>
+                            <button class="size-btn">XL</button>
+                        </div>
+                    </div>
+                    <button class="btn-gold full-width" id="quick-add-btn">Add to Shopping Bag</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIP MEMBERSHIP BANNER -->
+    <section class="vip-section" id="vip">
+        <div class="vip-card">
+            <h2 class="shimmer-text">JOIN THE AURA PRIVÉ CLUB</h2>
+            <p>Subscribe to receive invitation-only private fashion show passes & bespoke fit previews.</p>
+            <div class="vip-input-wrap">
+                <input type="email" placeholder="Enter your official email...">
+                <button class="btn-gold">Request Access</button>
+            </div>
         </div>
     </section>
 
@@ -141,7 +192,7 @@
             <h3><i class="fa-solid fa-robot"></i> AI Personal Stylist</h3>
             <span id="close-ai-modal" class="close-btn"><i class="fa-solid fa-xmark"></i></span>
         </div>
-        <p class="ai-desc">Tell AI what occasion you are shopping for (e.g., 'Gala Dinner Evening Gown') and AI will pick & add it to your cart instantly!</p>
+        <p class="ai-desc">Tell AI what occasion you are shopping for (e.g., 'Gala Evening Gown' or 'Italian Black Tie Tuxedo') and AI will pick & add it to your bag!</p>
         
         <input type="text" class="ai-input" id="ai-prompt" placeholder="Type occasion or outfit style...">
         <button class="btn-gold btn-ai full-width" id="ai-submit-btn">Generate & Add to Bag</button>
