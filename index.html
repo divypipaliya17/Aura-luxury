@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA COUTURE | Ultra-Luxury Bespoke Fashion</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#08080a',
+                        'obsidian-light': '#121217',
+                        'obsidian-card': 'rgba(18, 18, 23, 0.75)',
+                        gold: {
+                            100: '#fcf6ba',
+                            300: '#e6c875',
+                            500: '#bf953f',
+                            700: '#aa771c',
+                            900: '#865c10',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 25px rgba(191, 149, 63, 0.25)',
+                        'gold-glow-lg': '0 0 45px rgba(191, 149, 63, 0.4)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Puter.js SDK -->
+    <script src="https://js.puter.com/v2/"></script>
+
+    <!-- Vanilla Tilt for 3D Cards -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+    <style>
+        body {
+            background-color: #08080a;
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-serif-luxury {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Gold Gradient Text */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Gold Gradient Border */
+        .gold-border {
+            border-image: linear-gradient(135deg, #bf953f, #fcf6ba, #aa771c) 1;
+        }
+
+        /* Shimmer Animation Effect */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .shimmer-btn {
+            background: linear-gradient(90deg, #bf953f 0%, #fcf6ba 50%, #bf953f 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3.5s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .shimmer-btn:hover {
+            box-shadow: 0 0 25px rgba(191, 149, 63, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Glassmorphism styling */
+        .glass-card {
+            background: rgba(18, 18, 23, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(191, 149, 63, 0.15);
+        }
+
+        .glass-nav {
+            background: rgba(8, 8, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(191, 149, 63, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #08080a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #332a19;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #bf953f;
+        }
+
+        .pulse-gold {
+            box-shadow: 0 0 0 0 rgba(191, 149, 63, 0.4);
+            animation: pulse-gold-anim 2s infinite;
+        }
+
+        @keyframes pulse-gold-anim {
+            0% { box-shadow: 0 0 0 0 rgba(191, 149, 63, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(191, 149, 63, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(191, 149, 63, 0); }
+        }
+    </style>
+</head>
+<body class="selection:bg-gold-500 selection:text-black">
+
+    <!-- Announcement Bar with Runway Sale Countdown -->
+    <div class="bg-gradient-to-r from-obsidian via-amber-950/40 to-obsidian border-b border-gold-500/30 text-xs py-2 px-4 text-center tracking-widest uppercase flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-gold-300">
+        <span class="flex items-center gap-2">
+            <i class="fa-solid font-light fa-sparkles text-gold-500 animate-pulse"></i>
+            WINTER HAUTE COUTURE SHOWCASE
+        </span>
+        <span class="hidden sm:inline text-gold-500/40">•</span>
+        <div class="flex items-center gap-2 font-mono font-medium">
+            <span>OFFER ENDS IN:</span>
+            <span id="countdown-timer" class="text-white font-bold bg-black/60 px-2 py-0.5 rounded border border-gold-500/30">24:00:00</span>
+        </div>
+        <span class="hidden md:inline text-gold-500/40">•</span>
+        <span class="hidden md:inline text-gray-300">COMPLIMENTARY GLOBAL BESPOKE SHIPPING</span>
+    </div>
+
+    <!-- Sticky Glassmorphism Header -->
+    <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full border border-gold-500/40 flex items-center justify-center bg-black/40 group-hover:border-gold-500 transition-colors">
+                    <span class="font-serif-luxury font-bold text-xl gold-gradient-text">A</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif-luxury font-bold text-2xl tracking-[0.25em] gold-gradient-text leading-none">AURA</span>
+                    <span class="text-[9px] tracking-[0.4em] text-gold-500/80 uppercase font-medium mt-1">COUTURE</span>
+                </div>
+            </a>
+
+            <!-- Search & Filters (Desktop) -->
+            <div class="hidden md:flex items-center gap-4 flex-1 max-w-md mx-8">
+                <div class="relative w-full">
+                    <input type="text" id="search-input" placeholder="Search bespoke jackets, gowns, silk suits..." 
+                           class="w-full bg-black/50 border border-gold-500/20 rounded-full py-2 pl-10 pr-4 text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-gold-500/80 transition-all">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-2.5 text-gold-500/60 text-xs"></i>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex items-center gap-3 sm:gap-5">
+                <!-- AI Assistant Trigger Button -->
+                <button onclick="openAiModal()" class="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gold-500/40 bg-gold-500/10 text-gold-300 hover:bg-gold-500/20 text-xs font-medium transition-all hover:scale-105">
+                    <i class="fa-solid fa-wand-magic-sparkles text-gold-300"></i>
+                    <span>Stylist AI</span>
+                </button>
+
+                <!-- Wishlist Button -->
+                <button onclick="toggleWishlistFilter()" id="wishlist-nav-btn" class="relative p-2 text-gray-300 hover:text-gold-300 transition-colors" title="Wishlist">
+                    <i class="fa-regular fa-heart text-lg"></i>
+                    <span id="wishlist-counter" class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-gold-500 text-black text-[10px] font-bold flex items-center justify-center opacity-0 transition-opacity">0</span>
+                </button>
+
+                <!-- Cart Drawer Toggle -->
+                <button onclick="toggleCartDrawer()" class="relative p-2 text-gray-300 hover:text-gold-300 transition-colors" title="Shopping Bag">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cart-counter" class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-gold-500 text-black text-[10px] font-bold flex items-center justify-center opacity-0 transition-opacity">0</span>
+                </button>
+
+                <!-- Auth Container -->
+                <div id="auth-container">
+                    <button onclick="signInWithGoogle()" id="login-btn" class="px-4 py-2 rounded-full border border-gold-500/50 bg-black text-gold-300 hover:text-black hover:bg-gold-500 text-xs tracking-wider uppercase font-semibold transition-all">
+                        Sign In
+                    </button>
+                    <div id="user-profile" class="hidden flex items-center gap-2.5 bg-black/40 border border-gold-500/30 rounded-full pl-1.5 pr-3 py-1">
+                        <img id="user-avatar" src="" alt="Avatar" class="w-7 h-7 rounded-full object-cover border border-gold-500/50">
+                        <span id="user-name" class="text-xs font-medium text-gold-200"></span>
+                        <button onclick="signOutUser()" class="text-gray-400 hover:text-red-400 text-xs ml-1" title="Sign Out">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Search Bar -->
+        <div class="px-4 pb-3 md:hidden">
+            <div class="relative w-full">
+                <input type="text" id="search-input-mobile" placeholder="Search bespoke luxury items..." 
+                       class="w-full bg-black/50 border border-gold-500/20 rounded-full py-2 pl-9 pr-4 text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-gold-500/80">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gold-500/60 text-xs"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="relative min-h-[70vh] flex items-center justify-center px-4 overflow-hidden border-b border-gold-500/20">
+        <!-- Background Ambient Glow -->
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-900/20 via-obsidian to-obsidian pointer-events-none"></div>
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-gold-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-gold-700/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto text-center space-y-6 py-16">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-500/30 bg-gold-500/5 backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-gold-500 animate-ping"></span>
+                <span class="text-xs tracking-[0.3em] uppercase gold-gradient-text font-medium">Bespoke Atelier Collection 2026</span>
+            </div>
+
+            <h1 class="font-serif-luxury text-4xl sm:text-6xl md:text-7xl font-light tracking-wider leading-tight text-white">
+                Elegance Redefined.<br>
+                <span class="gold-gradient-text font-bold">Crafted Without Compromise.</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-sm sm:text-base text-gray-400 font-light leading-relaxed">
+                Explore 30 hand-tailored luxury garments crafted with Italian silk, French velvet, and gold-leaf embroidery. Assisted by AI for tailor-made styling recommendations.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+                <a href="#catalog" class="shimmer-btn text-black font-semibold text-xs tracking-[0.2em] uppercase px-8 py-4 rounded-full shadow-gold-glow">
+                    Explore Collection
+                </a>
+                <button onclick="openAiModal()" class="px-8 py-4 rounded-full border border-gold-500/40 text-gold-300 hover:bg-gold-500/10 text-xs tracking-[0.2em] uppercase font-semibold transition-all backdrop-blur-md flex items-center gap-2">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    Bespoke AI Assistant
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Catalog Section -->
+    <main id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        
+        <!-- Filter Header & Navigation Tabs -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-gold-500/20 mb-10">
+            <div>
+                <h2 class="font-serif-luxury text-2xl sm:text-3xl text-white font-medium tracking-wide">
+                    Haute Couture Gallery
+                </h2>
+                <p class="text-xs text-gold-500/70 mt-1 uppercase tracking-widest">30 Curated Bespoke Creations</p>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex flex-wrap items-center gap-2">
+                <button onclick="filterCategory('All')" id="btn-cat-All" class="cat-btn px-5 py-2 rounded-full border text-xs font-semibold tracking-wider uppercase transition-all bg-gold-500 text-black border-gold-500 shadow-gold-glow">
+                    All (30)
+                </button>
+                <button onclick="filterCategory('Men')" id="btn-cat-Men" class="cat-btn px-5 py-2 rounded-full border border-gold-500/30 text-gray-400 hover:text-gold-300 hover:border-gold-500/60 text-xs font-semibold tracking-wider uppercase transition-all">
+                    Men's Bespoke (15)
+                </button>
+                <button onclick="filterCategory('Women')" id="btn-cat-Women" class="cat-btn px-5 py-2 rounded-full border border-gold-500/30 text-gray-400 hover:text-gold-300 hover:border-gold-500/60 text-xs font-semibold tracking-wider uppercase transition-all">
+                    Women's Couture (15)
+                </button>
+            </div>
+        </div>
+
+        <!-- 4-Column Responsive Grid Layout -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Dynamic JS Injected Cards -->
+        </div>
+
+        <!-- Empty State Message -->
+        <div id="empty-grid-msg" class="hidden py-20 text-center">
+            <i class="fa-solid fa-gem text-4xl text-gold-500/40 mb-4"></i>
+            <p class="text-lg text-gray-300 font-serif-luxury">No Bespoke Pieces Match Your Criteria</p>
+            <p class="text-xs text-gray-500 mt-1">Try resetting search filters or ask our Stylist AI for assistance.</p>
+            <button onclick="filterCategory('All')" class="mt-6 px-6 py-2.5 rounded-full border border-gold-500 text-gold-300 text-xs uppercase tracking-wider">Reset Gallery</button>
+        </div>
+    </main>
+
+    <!-- Puter.js AI Assistant Modal -->
+    <div id="ai-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-card max-w-xl w-full rounded-2xl p-6 sm:p-8 border border-gold-500/40 relative shadow-2xl">
+            <button onclick="closeAiModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/50 border border-gold-500/30 text-gray-400 hover:text-white flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/50 flex items-center justify-center text-gold-300">
+                    <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+                </div>
+                <div>
+                    <h3 class="font-serif-luxury text-xl text-white font-medium">AURA Bespoke AI Stylist</h3>
+                    <p class="text-xs text-gold-500/80">Powered by Puter.js Intelligence</p>
+                </div>
+            </div>
+
+            <p class="text-xs text-gray-300 mb-6 font-light leading-relaxed">
+                Describe your upcoming gala, black-tie dinner, red carpet event, or personal preference. Our AI will curate the ideal luxury piece from our 30-item collection and automatically prepare it for your bag.
+            </p>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider text-gold-400 mb-2">Tell Us About Your Style & Event</label>
+                    <textarea id="ai-user-prompt" rows="3" placeholder="e.g. I need a regal outfit for an evening luxury gala in Paris with gold details, budget high..." 
+                              class="w-full bg-black/60 border border-gold-500/30 rounded-xl p-3 text-xs text-gray-200 placeholder-gray-600 focus:outline-none focus:border-gold-500"></textarea>
+                </div>
+
+                <div class="flex flex-wrap gap-2 text-[11px]">
+                    <span class="text-gray-500">Quick prompts:</span>
+                    <button onclick="setQuickPrompt('Black tie gala tuxedo for men')" class="text-gold-400 hover:underline">#BlackTieMen</button>
+                    <button onclick="setQuickPrompt('High couture royal gown for grand ball')" class="text-gold-400 hover:underline">#RoyalGown</button>
+                    <button onclick="setQuickPrompt('Modern minimalist luxury suit')" class="text-gold-400 hover:underline">#MinimalSuit</button>
+                </div>
+
+                <button onclick="runAiStylist()" id="ai-submit-btn" class="w-full shimmer-btn py-3.5 rounded-xl text-black font-semibold text-xs tracking-widest uppercase flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span>Consult Stylist AI</span>
+                </button>
+            </div>
+
+            <!-- AI Response Box -->
+            <div id="ai-response-box" class="hidden mt-6 p-4 rounded-xl bg-black/60 border border-gold-500/30 space-y-3">
+                <div id="ai-loading" class="flex items-center justify-center gap-3 py-4 text-gold-300 text-xs">
+                    <i class="fa-solid fa-spinner fa-spin text-lg"></i>
+                    <span>Analyzing 30 Bespoke Items with Puter AI...</span>
+                </div>
+                <div id="ai-result-content" class="hidden text-xs text-gray-300 space-y-2">
+                    <!-- Populated by AI JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Quick View Modal -->
+    <div id="quickview-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-card max-w-3xl w-full rounded-2xl overflow-hidden border border-gold-500/40 relative shadow-2xl flex flex-col md:flex-row max-h-[90vh]">
+            <button onclick="closeQuickView()" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-black/70 border border-gold-500/30 text-gray-400 hover:text-white flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Image Column -->
+            <div class="w-full md:w-1/2 h-64 md:h-auto relative bg-black/60 overflow-hidden">
+                <img id="qv-image" src="" alt="Product Quick View" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <span id="qv-category" class="absolute top-4 left-4 bg-black/70 border border-gold-500/30 px-3 py-1 rounded-full text-[10px] uppercase font-bold tracking-widest text-gold-300"></span>
+            </div>
+
+            <!-- Details Column -->
+            <div class="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto">
+                <div class="space-y-4">
+                    <div>
+                        <h3 id="qv-title" class="font-serif-luxury text-2xl text-white font-medium leading-snug"></h3>
+                        <p id="qv-price" class="text-xl gold-gradient-text font-bold mt-2"></p>
+                    </div>
+
+                    <p id="qv-description" class="text-xs text-gray-300 font-light leading-relaxed"></p>
+
+                    <!-- Size Selector -->
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-wider text-gold-400 mb-2 font-semibold">Select Bespoke Fit</label>
+                        <div class="flex gap-2" id="qv-sizes">
+                            <button onclick="selectSize('S')" class="size-btn px-3.5 py-1.5 rounded-lg border border-gold-500/30 text-xs text-gray-300 hover:border-gold-500">S</button>
+                            <button onclick="selectSize('M')" class="size-btn px-3.5 py-1.5 rounded-lg border border-gold-500 text-xs text-gold-300 bg-gold-500/20 font-bold">M</button>
+                            <button onclick="selectSize('L')" class="size-btn px-3.5 py-1.5 rounded-lg border border-gold-500/30 text-xs text-gray-300 hover:border-gold-500">L</button>
+                            <button onclick="selectSize('XL')" class="size-btn px-3.5 py-1.5 rounded-lg border border-gold-500/30 text-xs text-gray-300 hover:border-gold-500">XL</button>
+                        </div>
+                    </div>
+
+                    <!-- Material Details -->
+                    <div class="p-3 rounded-lg bg-black/40 border border-gold-500/10 text-[11px] text-gray-400 space-y-1">
+                        <div><strong class="text-gold-300">Craftsmanship:</strong> Handmade in Milan Atelier</div>
+                        <div><strong class="text-gold-300">Composition:</strong> 100% Bespoke Material & Silk Lining</div>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex gap-3">
+                    <button id="qv-add-btn" onclick="" class="flex-1 shimmer-btn py-3 rounded-xl text-black font-semibold text-xs tracking-widest uppercase shadow-gold-glow">
+                        Add to Shopping Bag
+                    </button>
+                    <button id="qv-wish-btn" onclick="" class="px-4 py-3 rounded-xl border border-gold-500/40 text-gold-300 hover:bg-gold-500/10">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide-out Cart Drawer -->
+    <div id="cart-drawer-overlay" onclick="toggleCartDrawer()" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    
+    <div id="cart-drawer" class="fixed top-0 right-0 z-50 h-full w-full max-w-md bg-obsidian-light border-l border-gold-500/30 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <!-- Drawer Header -->
+        <div class="p-6 border-b border-gold-500/20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-bag-shopping text-gold-400"></i>
+                <h3 class="font-serif-luxury text-lg text-white font-medium tracking-wide">Your Shopping Bag</h3>
+            </div>
+            <button onclick="toggleCartDrawer()" class="text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- Dynamic JS injected cart items -->
+        </div>
+
+        <!-- Drawer Footer / Checkout -->
+        <div class="p-6 border-t border-gold-500/20 bg-black/60 space-y-4">
+            <div class="space-y-1.5 text-xs">
+                <div class="flex justify-between text-gray-400">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">$0</span>
+                </div>
+                <div class="flex justify-between text-gray-400">
+                    <span>Bespoke Shipping</span>
+                    <span class="text-gold-400 uppercase">Complimentary</span>
+                </div>
+                <div class="flex justify-between text-base font-bold text-white pt-2 border-t border-gold-500/10">
+                    <span>Total</span>
+                    <span id="cart-total" class="gold-gradient-text">$0</span>
+                </div>
+            </div>
+
+            <button onclick="triggerCheckout()" class="w-full shimmer-btn py-3.5 rounded-xl text-black font-bold text-xs tracking-[0.2em] uppercase shadow-gold-glow">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- VIP Privé Access Newsletter Section -->
+    <section class="py-20 border-t border-gold-500/20 bg-gradient-to-b from-obsidian to-black relative">
+        <div class="max-w-4xl mx-auto px-4 text-center space-y-6">
+            <div class="w-12 h-12 rounded-full border border-gold-500/40 bg-gold-500/10 flex items-center justify-center mx-auto text-gold-300">
+                <i class="fa-solid fa-crown text-xl"></i>
+            </div>
+            <h2 class="font-serif-luxury text-3xl sm:text-4xl text-white font-light tracking-wide">
+                Join Aura Privé Club
+            </h2>
+            <p class="text-xs sm:text-sm text-gray-400 max-w-xl mx-auto">
+                Receive private invitations to runway debuts, limited bespoke drops, and tailored stylist access before public release.
+            </p>
+
+            <form onsubmit="handleNewsletter(event)" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
+                <input type="email" required placeholder="Enter your VIP email address" 
+                       class="flex-1 bg-black/60 border border-gold-500/30 rounded-full px-5 py-3 text-xs text-gray-200 placeholder-gray-600 focus:outline-none focus:border-gold-500">
+                <button type="submit" class="shimmer-btn px-6 py-3 rounded-full text-black font-semibold text-xs tracking-wider uppercase">
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Luxury Footer -->
+    <footer class="bg-black border-t border-gold-500/20 py-12 px-4 sm:px-6 lg:px-8 text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="space-y-3">
+                <span class="font-serif-luxury font-bold text-xl gold-gradient-text tracking-widest">AURA COUTURE</span>
+                <p class="text-gray-400 font-light leading-relaxed">Defining ultra-luxury bespoke fashion through timeless Italian tailoring, modern innovation, and custom AI styling.</p>
+            </div>
+            <div>
+                <h4 class="font-serif-luxury text-white uppercase tracking-wider mb-3">Atelier</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gold-300 transition-colors">Milan Flagship</a></li>
+                    <li><a href="#" class="hover:text-gold-300 transition-colors">Paris Haute Salon</a></li>
+                    <li><a href="#" class="hover:text-gold-300 transition-colors">Bespoke Measurements</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-serif-luxury text-white uppercase tracking-wider mb-3">Client Care</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gold-300 transition-colors">Private Stylist Consultation</a></li>
+                    <li><a href="#" class="hover:text-gold-300 transition-colors">Complimentary Shipping & Returns</a></li>
+                    <li><a href="#" class="hover:text-gold-300 transition-colors">Authentication Guarantee</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-serif-luxury text-white uppercase tracking-wider mb-3">Connect</h4>
+                <div class="flex gap-4 text-base text-gold-400">
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 border-t border-gold-500/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 AURA COUTURE Atelier. All Rights Reserved.</p>
+            
+            <!-- MANDATORY FOOTER CREDITS -->
+            <p class="text-gold-300 font-medium tracking-widest uppercase text-[11px] border border-gold-500/30 px-4 py-1.5 rounded-full bg-gold-500/5">
+                Made by DIVY, ABHAY, SAHIL, JEET
+            </p>
+        </div>
+    </footer>
+
+    <!-- Firebase Auth Modular SDK Initialization Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // Demo Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyD-DEMO_KEY_AURA_COUTURE_2026",
+            authDomain: "aura-couture.firebaseapp.com",
+            projectId: "aura-couture",
+            storageBucket: "aura-couture.appspot.com",
+            messagingSenderId: "1234567890",
+            appId: "1:1234567890:web:aura2026demo"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        // Attach Auth methods to global scope for HTML clicks
+        window.signInWithGoogle = async () => {
+            try {
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+                showToast(`Welcome back, ${user.displayName.split(' ')[0]}`);
+            } catch (error) {
+                console.warn("Firebase Google Sign-In Fallback Simulation:", error);
+                // Demo fallback if Firebase domain is unconfigured
+                const mockUser = {
+                    displayName: "VIP Client",
+                    photoURL: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200"
+                };
+                updateUserUI(mockUser);
+                showToast("Signed in as VIP Client");
+            }
+        };
+
+        window.signOutUser = () => {
+            signOut(auth).then(() => {
+                updateUserUI(null);
+                showToast("Signed out successfully");
+            }).catch(() => {
+                updateUserUI(null);
+            });
+        };
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                updateUserUI(user);
+            } else {
+                updateUserUI(null);
+            }
+        });
+
+        function updateUserUI(user) {
+            const loginBtn = document.getElementById('login-btn');
+            const userProfile = document.getElementById('user-profile');
+            const userName = document.getElementById('user-name');
+            const userAvatar = document.getElementById('user-avatar');
+
+            if (user) {
+                loginBtn.classList.add('hidden');
+                userProfile.classList.remove('hidden');
+                userName.textContent = user.displayName ? user.displayName.split(' ')[0] : 'VIP Client';
+                userAvatar.src = user.photoURL || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200';
+            } else {
+                loginBtn.classList.remove('hidden');
+                userProfile.classList.add('hidden');
+            }
+        }
+    </script>
+
+    <script>
+        /* ----------------------------------------------------
+           30 HIGH-DEFINITION LUXURY OUTFITS DATASET
+           (15 Men's Bespoke Suits/Tuxedos + 15 Women's High Couture)
+        ---------------------------------------------------- */
+        const PRODUCTS = [
+            // MEN'S BESPOKE (15 Items)
+            {
+                id: 'm1',
+                name: 'Imperial Black-Tie Tuxedo',
+                category: 'Men',
+                price: 4800,
+                image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=800',
+                description: 'Tailored Italian wool-silk blend tuxedo featuring hand-satin lapels and gold thread lining.'
+            },
+            {
+                id: 'm2',
+                name: 'Midnight Navy Velvet Blazer',
+                category: 'Men',
+                price: 3600,
+                image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800',
+                description: 'French cotton-velvet evening jacket with hand-carved gold buttons and unstructured shoulder.'
+            },
+            {
+                id: 'm3',
+                name: 'Bespoke Charcoal Double Coat',
+                category: 'Men',
+                price: 5200,
+                image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=800',
+                description: 'Pure cashmere double-breasted overcoat lined with hand-printed Italian silk.'
+            },
+            {
+                id: 'm4',
+                name: 'Emerald Silk Jacquard Dinner Suit',
+                category: 'Men',
+                price: 5900,
+                image: 'https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&q=80&w=800',
+                description: 'Lustrous emerald jacquard pattern tuxedo designed for high-society galas.'
+            },
+            {
+                id: 'm5',
+                name: 'Royal Brocade Tailcoat',
+                category: 'Men',
+                price: 6400,
+                image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800',
+                description: 'Ceremonial evening coat crafted with golden bullion embroidery on deep onyx wool.'
+            },
+            {
+                id: 'm6',
+                name: 'Sandstone Linen Riviera Suit',
+                category: 'Men',
+                price: 3200,
+                image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800',
+                description: 'Lightweight bespoke linen suit with horn buttons, ideal for summer Mediterranean galas.'
+            },
+            {
+                id: 'm7',
+                name: 'Onyx Satin Lapel Suit',
+                category: 'Men',
+                price: 4500,
+                image: 'https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?auto=format&fit=crop&q=80&w=800',
+                description: 'Sleek single-button suit crafted from Super 180s Merino wool with silk accent trim.'
+            },
+            {
+                id: 'm8',
+                name: 'Bespoke Camel Shearling Coat',
+                category: 'Men',
+                price: 7800,
+                image: 'https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&q=80&w=800',
+                description: 'Hand-dyed shearling leather trench coat with soft fleece interior and gold buckles.'
+            },
+            {
+                id: 'm9',
+                name: 'Burgundy Venetian Velvet Suit',
+                category: 'Men',
+                price: 4900,
+                image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=800',
+                description: 'Rich burgundy evening suit featuring slim shawl lapels and subtle lustre.'
+            },
+            {
+                id: 'm10',
+                name: 'Monaco Off-White Tuxedo',
+                category: 'Men',
+                price: 4300,
+                image: 'https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&q=80&w=800',
+                description: 'Ivory wool dinner jacket paired with jet-black satin trousers.'
+            },
+            {
+                id: 'm11',
+                name: 'Titanium Grey pinstripe Suit',
+                category: 'Men',
+                price: 3800,
+                image: 'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&q=80&w=800',
+                description: 'Executive pinstripe suit tailored with subtle gold micro-lines.'
+            },
+            {
+                id: 'm12',
+                name: 'Sapphire Silk Kimono Suit',
+                category: 'Men',
+                price: 5500,
+                image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800',
+                description: 'Modern bespoke fusion tailoring featuring structured shoulders and sash belt.'
+            },
+            {
+                id: 'm13',
+                name: 'Cashmere Trench & Suit Combo',
+                category: 'Men',
+                price: 8200,
+                image: 'https://images.unsplash.com/photo-1520975954732-35dd22299614?auto=format&fit=crop&q=80&w=800',
+                description: 'Complete 3-piece bespoke ensemble made for winter luxury fashion events.'
+            },
+            {
+                id: 'm14',
+                name: 'Gold Embellished Prince Suit',
+                category: 'Men',
+                price: 8900,
+                image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800',
+                description: 'Hand-embroidered gold filigree suit crafted for red carpet premieres.'
+            },
+            {
+                id: 'm15',
+                name: 'Nocturne Black Leather Duster',
+                category: 'Men',
+                price: 6100,
+                image: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=800',
+                description: 'Lambskin leather evening coat with custom matte gold hardware.'
+            },
+
+            // WOMEN'S HIGH COUTURE (15 Items)
+            {
+                id: 'w1',
+                name: 'Gold-Leaf Corset Gown',
+                category: 'Women',
+                price: 9800,
+                image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=800',
+                description: 'Haute couture ballgown accented with hand-applied 24k gold leaf details.'
+            },
+            {
+                id: 'w2',
+                name: 'Midnight Velvet Mermaid Dress',
+                category: 'Women',
+                price: 6500,
+                image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&q=80&w=800',
+                description: 'Deep navy velvet gown with crystal-embellished backless silhouette.'
+            },
+            {
+                id: 'w3',
+                name: 'Ethereal Silk Chiffon Cape Gown',
+                category: 'Women',
+                price: 7200,
+                image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=800',
+                description: 'Flowing Italian silk chiffon dress with trailing cape sleeves and metallic waist.'
+            },
+            {
+                id: 'w4',
+                name: 'Crimson Satin High-Slit Dress',
+                category: 'Women',
+                price: 5400,
+                image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&q=80&w=800',
+                description: 'Vibrant scarlet red duchess satin floor-length gown with dramatic leg slit.'
+            },
+            {
+                id: 'w5',
+                name: 'Onyx Feathered Gala Gown',
+                category: 'Women',
+                price: 8600,
+                image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800',
+                description: 'Sculpted black evening dress trimmed with ethically sourced ostrich feathers.'
+            },
+            {
+                id: 'w6',
+                name: 'Champagne Sequin Runway Dress',
+                category: 'Women',
+                price: 6800,
+                image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&q=80&w=800',
+                description: 'Micro-sequin gown that shimmers under golden gala lights with mermaid train.'
+            },
+            {
+                id: 'w7',
+                name: 'Royal Emerald Organza Gown',
+                category: 'Women',
+                price: 7400,
+                image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&q=80&w=800',
+                description: 'Voluminous tiered organza gown inspired by classic French royalty.'
+            },
+            {
+                id: 'w8',
+                name: 'Celestial Diamond Dust Dress',
+                category: 'Women',
+                price: 11200,
+                image: 'https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&q=80&w=800',
+                description: 'Custom couture creation studded with Swarovski crystals across fine mesh.'
+            },
+            {
+                id: 'w9',
+                name: 'Bespoke Golden Silk Kimono Gown',
+                category: 'Women',
+                price: 6300,
+                image: 'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&q=80&w=800',
+                description: 'Heavy silk crepe gown with obi sash and gold floral embroidery.'
+            },
+            {
+                id: 'w10',
+                name: 'Aura Sculptural White Gown',
+                category: 'Women',
+                price: 8100,
+                image: 'https://images.unsplash.com/photo-1549062572-544a64fb0c56?auto=format&fit=crop&q=80&w=800',
+                description: 'Architectural ivory dress with asymmetric neckline and structured train.'
+            },
+            {
+                id: 'w11',
+                name: 'Rose Gold Beaded Fringe Gown',
+                category: 'Women',
+                price: 7900,
+                image: 'https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?auto=format&fit=crop&q=80&w=800',
+                description: 'Flapper-inspired modern luxury gown with cascading glass bead fringe.'
+            },
+            {
+                id: 'w12',
+                name: 'Obsidian Sheer Tulle Ballgown',
+                category: 'Women',
+                price: 8900,
+                image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800',
+                description: 'Dramatic black tulle gown with internal boned corset and gold embroidery.'
+            },
+            {
+                id: 'w13',
+                name: 'Sapphire Velvet Off-Shoulder Gown',
+                category: 'Women',
+                price: 6100,
+                image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=800',
+                description: 'Plush sapphire blue velvet dress with sweetheart off-shoulder sleeves.'
+            },
+            {
+                id: 'w14',
+                name: 'Ivory Pearl Embroidered Dress',
+                category: 'Women',
+                price: 9400,
+                image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=800',
+                description: 'Hand-strung freshwater pearls cover this ethereal haute couture piece.'
+            },
+            {
+                id: 'w15',
+                name: 'Bespoke Golden Metallic Trench Gown',
+                category: 'Women',
+                price: 7600,
+                image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&q=80&w=800',
+                description: 'Hybrid coat-gown crafted in liquid metallic gold fabric.'
+            }
+        ];
+
+        // Global State
+        let currentCategory = 'All';
+        let wishlist = new Set();
+        let cart = [];
+        let activeQuickViewProduct = null;
+        let selectedSize = 'M';
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            startCountdownTimer();
+            initSearch();
+        });
+
+        /* Render Products into Responsive 4-Column Grid */
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            const emptyMsg = document.getElementById('empty-grid-msg');
+            const searchVal = (document.getElementById('search-input')?.value || '').toLowerCase();
+
+            let filtered = PRODUCTS.filter(p => {
+                const matchCat = (currentCategory === 'All' || p.category === currentCategory);
+                const matchSearch = p.name.toLowerCase().includes(searchVal) || p.description.toLowerCase().includes(searchVal);
+                return matchCat && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyMsg.classList.remove('hidden');
+                return;
+            } else {
+                emptyMsg.classList.add('hidden');
+            }
+
+            grid.innerHTML = filtered.map(item => {
+                const isLiked = wishlist.has(item.id);
+                return `
+                <div class="glass-card rounded-2xl overflow-hidden border border-gold-500/20 hover:border-gold-500/60 transition-all duration-500 group flex flex-col justify-between"
+                     data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                    
+                    <!-- Product Image Box -->
+                    <div class="relative h-80 overflow-hidden bg-black/60 cursor-pointer" onclick="openQuickView('${item.id}')">
+                        <img src="${item.image}" alt="${item.name}" 
+                             class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-80"></div>
+                        
+                        <!-- Wishlist Toggle -->
+                        <button onclick="event.stopPropagation(); toggleWishlist('${item.id}')" 
+                                class="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/60 border border-gold-500/30 text-white hover:text-gold-300 flex items-center justify-center backdrop-blur-md transition-transform active:scale-90">
+                            <i class="${isLiked ? 'fa-solid text-red-500' : 'fa-regular'} fa-heart text-sm"></i>
+                        </button>
+
+                        <!-- Category Tag -->
+                        <span class="absolute top-3 left-3 bg-black/70 border border-gold-500/30 px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-widest text-gold-300">
+                            ${item.category}'s Couture
+                        </span>
+
+                        <!-- Quick View Overlay Button -->
+                        <div class="absolute inset-x-4 bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center">
+                            <button class="w-full py-2.5 rounded-xl bg-black/80 border border-gold-500 text-gold-200 text-xs font-semibold uppercase tracking-wider backdrop-blur-md hover:bg-gold-500 hover:text-black transition-all">
+                                Quick View
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Content Details -->
+                    <div class="p-5 flex flex-col justify-between flex-1">
+                        <div>
+                            <h3 class="font-serif-luxury text-base text-white font-medium group-hover:text-gold-300 transition-colors line-clamp-1" onclick="openQuickView('${item.id}')">
+                                ${item.name}
+                            </h3>
+                            <p class="text-[11px] text-gray-400 font-light mt-1 line-clamp-2 leading-relaxed">
+                                ${item.description}
+                            </p>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-gold-500/10 flex items-center justify-between">
+                            <span class="text-base font-bold gold-gradient-text">
+                                $${item.price.toLocaleString()}
+                            </span>
+                            <button onclick="addToCart('${item.id}')" 
+                                    class="px-3.5 py-1.5 rounded-full border border-gold-500/40 text-gold-300 hover:bg-gold-500 hover:text-black text-xs font-medium uppercase tracking-wider transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-plus text-[10px]"></i>
+                                <span>Bag</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            // Re-initialize VanillaTilt for 3D tilt effects
+            if (window.VanillaTilt) {
+                VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+            }
+        }
+
+        /* Filter by Category */
+        function filterCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-gold-500', 'text-black', 'shadow-gold-glow');
+                btn.classList.add('text-gray-400', 'border-gold-500/30');
+            });
+            const activeBtn = document.getElementById(`btn-cat-${cat}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-gold-500', 'text-black', 'shadow-gold-glow');
+                activeBtn.classList.remove('text-gray-400');
+            }
+            renderProducts();
+        }
+
+        /* Search Initializer */
+        function initSearch() {
+            const inputDesktop = document.getElementById('search-input');
+            const inputMobile = document.getElementById('search-input-mobile');
+            const handleInput = (e) => {
+                if (inputDesktop) inputDesktop.value = e.target.value;
+                if (inputMobile) inputMobile.value = e.target.value;
+                renderProducts();
+            };
+            if (inputDesktop) inputDesktop.addEventListener('input', handleInput);
+            if (inputMobile) inputMobile.addEventListener('input', handleInput);
+        }
+
+        /* Wishlist Toggle */
+        function toggleWishlist(id) {
+            if (wishlist.has(id)) {
+                wishlist.delete(id);
+                showToast("Removed from Wishlist");
+            } else {
+                wishlist.add(id);
+                showToast("Added to Bespoke Wishlist");
+            }
+            updateWishlistCounter();
+            renderProducts();
+        }
+
+        function updateWishlistCounter() {
+            const badge = document.getElementById('wishlist-counter');
+            if (wishlist.size > 0) {
+                badge.textContent = wishlist.size;
+                badge.classList.remove('opacity-0');
+            } else {
+                badge.classList.add('opacity-0');
+            }
+        }
+
+        function toggleWishlistFilter() {
+            if (wishlist.size === 0) {
+                showToast("Your wishlist is currently empty");
+                return;
+            }
+            const grid = document.getElementById('product-grid');
+            const wishItems = PRODUCTS.filter(p => wishlist.has(p.id));
+            
+            grid.innerHTML = wishItems.map(item => `
+                <div class="glass-card rounded-2xl overflow-hidden border border-gold-500/40 p-4">
+                    <img src="${item.image}" class="w-full h-64 object-cover rounded-xl">
+                    <h3 class="font-serif-luxury text-lg text-white mt-3">${item.name}</h3>
+                    <p class="gold-gradient-text font-bold text-base mt-1">$${item.price.toLocaleString()}</p>
+                    <button onclick="addToCart('${item.id}')" class="w-full mt-3 shimmer-btn py-2 text-black font-bold text-xs rounded-xl">Add to Bag</button>
+                </div>
+            `).join('');
+        }
+
+        /* Cart Management */
+        function addToCart(id, size = 'M') {
+            const product = PRODUCTS.find(p => p.id === id);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === id && item.size === size);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1, size });
+            }
+
+            updateCartUI();
+            showToast(`${product.name} added to Shopping Bag`);
+        }
+
+        function updateCartQty(id, size, change) {
+            const item = cart.find(i => i.id === id && i.size === size);
+            if (item) {
+                item.qty += change;
+                if (item.qty <= 0) {
+                    cart = cart.filter(i => !(i.id === id && i.size === size));
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const counter = document.getElementById('cart-counter');
+            const subtotalEl = document.getElementById('cart-subtotal');
+            const totalEl = document.getElementById('cart-total');
+
+            const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            if (totalCount > 0) {
+                counter.textContent = totalCount;
+                counter.classList.remove('opacity-0');
+            } else {
+                counter.classList.add('opacity-0');
+            }
+
+            subtotalEl.textContent = `$${totalPrice.toLocaleString()}`;
+            totalEl.textContent = `$${totalPrice.toLocaleString()}`;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="py-20 text-center text-gray-500">
+                        <i class="fa-solid fa-bag-shopping text-3xl mb-3 text-gold-500/30"></i>
+                        <p class="text-xs uppercase tracking-wider">Your Shopping Bag is Empty</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="flex items-center gap-4 p-3 rounded-xl bg-black/40 border border-gold-500/20">
+                    <img src="${item.image}" class="w-16 h-20 object-cover rounded-lg">
+                    <div class="flex-1">
+                        <h4 class="text-xs text-white font-medium line-clamp-1">${item.name}</h4>
+                        <p class="text-[10px] text-gold-400">Fit: Bespoke Size ${item.size}</p>
+                        <p class="text-xs font-bold text-gray-200 mt-1">$${(item.price * item.qty).toLocaleString()}</p>
+                        
+                        <div class="flex items-center gap-2 mt-2">
+                            <button onclick="updateCartQty('${item.id}', '${item.size}', -1)" class="w-5 h-5 rounded bg-gold-500/20 text-gold-300 flex items-center justify-center text-xs hover:bg-gold-500 hover:text-black">-</button>
+                            <span class="text-xs text-white">${item.qty}</span>
+                            <button onclick="updateCartQty('${item.id}', '${item.size}', 1)" class="w-5 h-5 rounded bg-gold-500/20 text-gold-300 flex items-center justify-center text-xs hover:bg-gold-500 hover:text-black">+</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-drawer-overlay');
+            drawer.classList.toggle('translate-x-full');
+            overlay.classList.toggle('opacity-0');
+            overlay.classList.toggle('pointer-events-none');
+        }
+
+        function triggerCheckout() {
+            if (cart.length === 0) {
+                showToast("Please add items to your bag first");
+                return;
+            }
+            showToast("Redirecting to Secure Bespoke VIP Checkout...");
+            setTimeout(() => {
+                cart = [];
+                updateCartUI();
+                toggleCartDrawer();
+                showToast("Order Confirmed! Your Atelier Master Tailor will reach out.");
+            }, 2000);
+        }
+
+        /* Quick View Modal Handlers */
+        function openQuickView(id) {
+            const product = PRODUCTS.find(p => p.id === id);
+            if (!product) return;
+            activeQuickViewProduct = product;
+
+            document.getElementById('qv-image').src = product.image;
+            document.getElementById('qv-title').textContent = product.name;
+            document.getElementById('qv-price').textContent = `$${product.price.toLocaleString()}`;
+            document.getElementById('qv-description').textContent = product.description;
+            document.getElementById('qv-category').textContent = `${product.category}'s Couture`;
+
+            document.getElementById('qv-add-btn').onclick = () => {
+                addToCart(product.id, selectedSize);
+                closeQuickView();
+            };
+
+            document.getElementById('qv-wish-btn').onclick = () => {
+                toggleWishlist(product.id);
+            };
+
+            const modal = document.getElementById('quickview-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeQuickView() {
+            const modal = document.getElementById('quickview-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function selectSize(size) {
+            selectedSize = size;
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.remove('border-gold-500', 'text-gold-300', 'bg-gold-500/20', 'font-bold');
+                btn.classList.add('border-gold-500/30', 'text-gray-300');
+            });
+            event.target.classList.add('border-gold-500', 'text-gold-300', 'bg-gold-500/20', 'font-bold');
+        }
+
+        /* AI Modal Handlers */
+        function openAiModal() {
+            const modal = document.getElementById('ai-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeAiModal() {
+            const modal = document.getElementById('ai-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function setQuickPrompt(txt) {
+            document.getElementById('ai-user-prompt').value = txt;
+        }
+
+        async function runAiStylist() {
+            const promptInput = document.getElementById('ai-user-prompt').value.trim();
+            if (!promptInput) {
+                showToast("Please enter your styling requirement");
+                return;
+            }
+
+            const box = document.getElementById('ai-response-box');
+            const loading = document.getElementById('ai-loading');
+            const resultDiv = document.getElementById('ai-result-content');
+
+            box.classList.remove('hidden');
+            loading.classList.remove('hidden');
+            resultDiv.classList.add('hidden');
+
+            // Format catalog info for Puter AI
+            const catalogSummary = PRODUCTS.map(p => `ID:${p.id} | ${p.name} | Category:${p.category} | Price:$${p.price}`).join('\n');
+            const systemPrompt = `You are a high-end luxury fashion stylist for AURA COUTURE. Analyze user requests and pick EXACTLY ONE best product from this catalog:\n${catalogSummary}\nRespond with JSON strictly in this format: {"selected_id": "m1", "advice": "Personalized luxury styling tip here."}`;
+
+            try {
+                // Call Puter.js AI SDK
+                let aiResponse;
+                if (window.puter && puter.ai && puter.ai.chat) {
+                    aiResponse = await puter.ai.chat(`${systemPrompt}\n\nUser Request: ${promptInput}`);
+                } else {
+                    // Smart Fallback
+                    aiResponse = JSON.stringify({
+                        selected_id: promptInput.toLowerCase().includes('men') ? 'm1' : 'w1',
+                        advice: "This exquisite piece aligns perfectly with your gala occasion, offering timeless Italian elegance and bespoke craftsmanship."
+                    });
+                }
+
+                loading.classList.add('hidden');
+                resultDiv.classList.remove('hidden');
+
+                let parsed;
+                try {
+                    const match = aiResponse.match(/\{[\s\S]*\}/);
+                    parsed = match ? JSON.parse(match[0]) : JSON.parse(aiResponse);
+                } catch (e) {
+                    parsed = {
+                        selected_id: PRODUCTS[0].id,
+                        advice: "Our Master Atelier recommends this iconic couture piece tailored for high-society sophistication."
+                    };
+                }
+
+                const matchedProduct = PRODUCTS.find(p => p.id === parsed.selected_id) || PRODUCTS[0];
+
+                resultDiv.innerHTML = `
+                    <div class="p-3 bg-gold-500/10 rounded-lg border border-gold-500/30">
+                        <span class="text-[10px] text-gold-400 font-bold uppercase tracking-widest">Recommended Bespoke Selection</span>
+                        <div class="flex items-center gap-3 mt-2">
+                            <img src="${matchedProduct.image}" class="w-12 h-16 object-cover rounded-md">
+                            <div>
+                                <h4 class="font-serif-luxury text-sm text-white">${matchedProduct.name}</h4>
+                                <p class="gold-gradient-text font-bold text-xs">$${matchedProduct.price.toLocaleString()}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-300 italic pt-1">"${parsed.advice}"</p>
+                    <button onclick="addToCart('${matchedProduct.id}'); closeAiModal(); toggleCartDrawer();" 
+                            class="w-full mt-2 shimmer-btn py-2 text-black font-bold text-xs rounded-lg uppercase">
+                        Accept & Add Selected Outfit To Bag
+                    </button>
+                `;
+            } catch (err) {
+                loading.classList.add('hidden');
+                resultDiv.classList.remove('hidden');
+                resultDiv.innerHTML = `<p class="text-red-400">Stylist service busy. Please select directly from gallery.</p>`;
+            }
+        }
+
+        /* Countdown Timer */
+        function startCountdownTimer() {
+            let seconds = 86400; // 24 hours
+            const el = document.getElementById('countdown-timer');
+            setInterval(() => {
+                seconds--;
+                if (seconds <= 0) seconds = 86400;
+                const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+                const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+                const secs = String(seconds % 60).padStart(2, '0');
+                if (el) el.textContent = `${hrs}:${mins}:${secs}`;
+            }, 1000);
+        }
+
+        /* Toast Notifications */
+        function showToast(msg) {
+            const existing = document.getElementById('aura-toast');
+            if (existing) existing.remove();
+
+            const toast = document.createElement('div');
+            toast.id = 'aura-toast';
+            toast.className = 'fixed bottom-6 right-6 z-50 glass-card border border-gold-500/50 text-gold-200 px-5 py-3 rounded-xl shadow-2xl text-xs font-medium tracking-wide flex items-center gap-3 animate-bounce';
+            toast.innerHTML = `<i class="fa-solid fa-crown text-gold-400"></i> <span>${msg}</span>`;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                if (toast) toast.remove();
+            }, 3500);
+        }
+
+        /* Newsletter Submit Handler */
+        function handleNewsletter(e) {
+            e.preventDefault();
+            showToast("Welcome to AURA Privé Society. Exclusive access granted.");
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
