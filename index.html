@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA COUTURE | Luxury Fashion & AI Stylist</title>
+  
+  <!-- CSS Stylesheet Link -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Puter.js CDN (Buy With AI) -->
+  <script src="https://js.puter.com/v2/"></script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo">AURA COUTURE</div>
+    <div class="nav-actions">
+      <div class="user-auth-box">
+        <button id="loginBtn" class="auth-btn"><i class="fa-brands fa-google"></i> Google Login</button>
+        <div id="userInfo" class="user-info hidden">
+          <img id="userAvatar" src="" alt="User">
+          <span id="userName"></span>
+          <button id="logoutBtn" class="logout-icon"><i class="fa-solid fa-right-from-bracket"></i></button>
+        </div>
+      </div>
+      <button class="cart-btn" onclick="toggleCart()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="cartCount" class="badge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>HAUTE COUTURE 2026</h1>
+      <p>Puter.js AI સ્માર્ટ અસિસ્ટન્ટ સાથે તમારા ડ્રેસની પસંદગી કરો</p>
+    </div>
+  </section>
+
+  <!-- Product Grid (Strictly 4 Columns) -->
+  <main class="container">
+    <h2 class="section-title">EXCLUSIVE COLLECTION</h2>
+    <div class="product-grid" id="productGrid">
+      <!-- JavaScript થી ૩૦ પ્રોડક્ટ્સ અહી ડાયનેમિકલી લોડ થશે -->
+    </div>
+  </main>
+
+  <!-- Buy with AI Drawer Modal -->
+  <div id="aiModal" class="modal">
+    <div class="modal-content ai-modal-content">
+      <span class="close-btn" onclick="closeAiModal()">&times;</span>
+      <div class="ai-header">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <h3>AURA AI Stylist Assistant</h3>
+      </div>
+      <div class="ai-product-preview" id="aiProductPreview">
+        <!-- Selected product preview here -->
+      </div>
+      <div class="ai-chat-box" id="aiChatBox">
+        <div class="ai-msg bot">નમસ્તે! હું તમારો AI ફેશન કન્સલ્ટન્ટ છું. આ આઉટફિટ વિશે તમને શું માહિતી જોઈએ છે? (ઉદા. સાઈઝ ગાઈડ, વિગતો, સ્ટીચિંગ કે ખરીદીની સલાહ)</div>
+      </div>
+      <div class="ai-input-box">
+        <input type="text" id="aiInput" placeholder="AI ને પૂછો અથવા 'Buy Now' લખો...">
+        <button onclick="sendAiMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sliding Cart Drawer -->
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>તમારી શોપિંગ બેગ</h3>
+      <span class="close-btn" onclick="toggleCart()">&times;</span>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="empty-msg">તમારી કાર્ટ ખાલી છે.</p>
+    </div>
+    <div class="cart-footer">
+      <div class="total-box">
+        <span>કુલ રકમ:</span>
+        <span id="cartTotal">₹0</span>
+      </div>
+      <button class="checkout-btn">ચેકઆઉટ કરો</button>
+    </div>
+  </div>
+
+  <!-- Firebase SDK Modules -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
