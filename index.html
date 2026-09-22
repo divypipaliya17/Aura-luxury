@@ -24,7 +24,7 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="logo">
-            <i class="fa-solid fa-gem"></i> AURA
+            <i class="fa-solid fa-gem glow-icon"></i> AURA
         </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
@@ -34,7 +34,7 @@
         </ul>
         <div class="nav-right">
             <!-- AI BUY BUTTON -->
-            <button class="btn-gold btn-ai" id="ai-buy-btn">
+            <button class="btn-gold btn-ai pulse-glow" id="ai-buy-btn">
                 <i class="fa-solid fa-wand-magic-sparkles"></i> Buy with AI
             </button>
 
@@ -57,37 +57,40 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION WITH ANIMATED BACKDROP -->
     <section class="hero" id="home">
-        <h1>BESPOKE LUXURY</h1>
-        <p>Experience haute couture curated with artificial intelligence & timeless craftsmanship.</p>
-        <div class="hero-btns">
-            <a href="#catalogue" class="btn-gold">Explore Collection</a>
-            <button class="btn-gold btn-ai" id="hero-ai-btn">AI Fashion Assistant</button>
+        <div class="hero-content fade-in-up">
+            <span class="hero-tag shimmer-text">AUTUMN / WINTER 2026 COLLECTION</span>
+            <h1 class="glow-head">BESPOKE LUXURY</h1>
+            <p>Experience haute couture curated with artificial intelligence & timeless craftsmanship.</p>
+            <div class="hero-btns">
+                <a href="#catalogue" class="btn-gold">Explore Collection</a>
+                <button class="btn-gold btn-ai" id="hero-ai-btn"><i class="fa-solid fa-sparkles"></i> AI Fashion Assistant</button>
+            </div>
         </div>
     </section>
 
     <!-- LIMITED EDITION BANNER -->
     <section class="offer-banner" id="offers">
-        <div>
-            <div class="offer-title-badge">Limited Runway Edition</div>
+        <div class="offer-card-animated">
+            <div class="offer-title-badge shimmer-text">Exclusive Runway Access</div>
             <h2 class="offer-heading">Winter Runway Special</h2>
             <p class="offer-desc">Enjoy up to 25% off selected bespoke couture garments for a limited period.</p>
             
             <div class="countdown-container">
-                <div class="time-box">
+                <div class="time-box glow-card">
                     <div class="time-num" id="days">02</div>
                     <div class="time-label">Days</div>
                 </div>
-                <div class="time-box">
+                <div class="time-box glow-card">
                     <div class="time-num" id="hours">14</div>
                     <div class="time-label">Hours</div>
                 </div>
-                <div class="time-box">
+                <div class="time-box glow-card">
                     <div class="time-num" id="mins">45</div>
                     <div class="time-label">Mins</div>
                 </div>
-                <div class="time-box">
+                <div class="time-box glow-card">
                     <div class="time-num" id="secs">30</div>
                     <div class="time-label">Secs</div>
                 </div>
@@ -95,15 +98,22 @@
         </div>
     </section>
 
+    <!-- CATEGORY FILTER BAR -->
+    <div class="category-filter-wrap">
+        <button class="filter-btn active" data-category="all">All Collection</button>
+        <button class="filter-btn" data-category="Men">Men's Bespoke</button>
+        <button class="filter-btn" data-category="Women">Women's Couture</button>
+    </div>
+
     <!-- PRODUCT CATALOGUE -->
     <section id="catalogue">
         <div class="section-title-wrap">
-            <h2 class="section-title">Trending Masterpieces</h2>
-            <div class="section-subtitle">Swipe or select to explore curated outfits</div>
+            <h2 class="section-title shimmer-text">Trending Masterpieces</h2>
+            <div class="section-subtitle">Swipe or select to explore 18 curated couture outfits</div>
         </div>
 
         <div class="product-grid" id="product-grid">
-            <!-- Dynamic JS Injected Products -->
+            <!-- Dynamic 18 Products Injected by JS -->
         </div>
     </section>
 
@@ -121,7 +131,7 @@
                 <span>Total:</span>
                 <span id="cart-total" class="gold-text">$0</span>
             </div>
-            <button class="btn-gold full-width">Checkout Now</button>
+            <button class="btn-gold full-width pulse-glow">Checkout Now</button>
         </div>
     </div>
 
@@ -141,12 +151,12 @@
     <!-- FOOTER -->
     <footer>
         <div class="logo footer-logo">
-            <i class="fa-solid fa-gem"></i> AURA COUTURE
+            <i class="fa-solid fa-gem glow-icon"></i> AURA COUTURE
         </div>
         <p class="footer-desc">Redefining Luxury Couture through Innovation & Elegance.</p>
         
         <!-- AUTHORS CREDITS -->
-        <div class="footer-authors">
+        <div class="footer-authors shimmer-text">
             Made by DIVY, ABHAY, SAHIL, JEET
         </div>
     </footer>
